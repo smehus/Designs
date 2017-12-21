@@ -8,14 +8,31 @@
 
 import Foundation
 
-
-internal final class NasaImageFacade {
+class JSONProcessor {
     
-    func getAll() {
+    private struct Keys {
         
     }
     
+    func process() -> ((JSON?, Error?) -> ()) {
+        return { json, error in
+            
+        }
+    }
+}
+
+
+internal final class NasaImageFacade {
+    
+    private let session: Session
+    
+    init(session: Session) {
+        self.session = session
+    }
+    
     func search(for query: String) {
-        
+        let processor = JSONProcessor()
+        let request = NasaRequest.images(query: query)
+        session.execute(request: request, handler: processor.process())
     }
 }

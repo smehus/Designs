@@ -30,8 +30,7 @@ extension Request {
 }
 
 protocol Session {
-    associatedtype DataType
-    func execute(request: Request, handler: @escaping (DataType?, Error?) -> ())
+    func execute(request: Request, handler: @escaping (JSON?, Error?) -> ())
 }
 
 typealias JSON = [String: Any]
@@ -65,7 +64,7 @@ class NetworkSession: Session {
             }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as! JSON
                 handler(json, nil)
             } catch let error {
                 handler(nil, error)
