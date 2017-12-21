@@ -15,10 +15,10 @@ enum OperationResult<T> {
 
 class ObservedOperation<T>: Operation {
     
-    private let operationObserver: (OperationResult<T>) -> ()
+    private let operationHandler: (OperationResult<T>) -> ()
     
-    required init(observer: @escaping (OperationResult<T>) -> ()) {
-        self.operationObserver = observer
+    required init(handler: @escaping (OperationResult<T>) -> ()) {
+        self.operationHandler = handler
     }
     
     override func main() {
@@ -32,9 +32,9 @@ class ObservedOperation<T>: Operation {
 
     func finish(data: T?, errors: [Error] = []) {
         if errors.isEmpty {
-            operationObserver(.success(result: data))
+            operationHandler(.success(result: data))
         } else {
-            operationObserver(.failed(errors: errors))
+            operationHandler(.failed(errors: errors))
         }
     }
 }
@@ -42,8 +42,8 @@ class ObservedOperation<T>: Operation {
 /// Example
 class NasaOperation: ObservedOperation<String> {
     
-    convenience init(data: String, observer: @escaping (OperationResult<String>) -> ()) {
-        self.init(observer: observer)
+    convenience init(data: String, handler: @escaping (OperationResult<String>) -> ()) {
+        self.init(handler: handler)
     }
     
     override func execute() {

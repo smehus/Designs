@@ -15,6 +15,7 @@
 		A51D66C41FEBF3DD0044C9AE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66C31FEBF3DD0044C9AE /* LoadingViewController.swift */; };
 		A51D66C61FEBF3FF0044C9AE /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66C51FEBF3FF0044C9AE /* StoryboardInstantiable.swift */; };
 		A51D66D51FEC04C80044C9AE /* ObservedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66D41FEC04C80044C9AE /* ObservedOperation.swift */; };
+		A51D66D71FEC08200044C9AE /* AddChildOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66D61FEC08200044C9AE /* AddChildOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A51D66C31FEBF3DD0044C9AE /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		A51D66C51FEBF3FF0044C9AE /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		A51D66D41FEC04C80044C9AE /* ObservedOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservedOperation.swift; sourceTree = "<group>"; };
+		A51D66D61FEC08200044C9AE /* AddChildOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				A51D66D41FEC04C80044C9AE /* ObservedOperation.swift */,
+				A51D66D61FEC08200044C9AE /* AddChildOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			files = (
 				A51D66B41FEBF3230044C9AE /* CoordinatorViewController.swift in Sources */,
 				A51D66B21FEBF3230044C9AE /* AppDelegate.swift in Sources */,
+				A51D66D71FEC08200044C9AE /* AddChildOperation.swift in Sources */,
 				A51D66C61FEBF3FF0044C9AE /* StoryboardInstantiable.swift in Sources */,
 				A51D66D51FEC04C80044C9AE /* ObservedOperation.swift in Sources */,
 				A51D66C41FEBF3DD0044C9AE /* LoadingViewController.swift in Sources */,
