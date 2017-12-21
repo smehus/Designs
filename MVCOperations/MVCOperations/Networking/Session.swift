@@ -20,6 +20,13 @@ protocol Request {
     var method: HTTPMethod { get }
     var taskType: DataTaskType { get }
     var urlRequest: URLRequest? { get }
+    var httpHeaders: [String: String] { get }
+}
+
+extension Request {
+    var httpHeaders: [String: String] {
+        return [:]
+    }
 }
 
 protocol Session {

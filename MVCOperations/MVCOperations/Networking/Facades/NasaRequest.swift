@@ -30,8 +30,7 @@ extension NasaRequest: Request {
     }
     
     var baseURL: URL? {
-        let stringURL = "https://images-api.nasa.gov"
-        return URL(string: stringURL)
+        return URL(string: "https://images-api.nasa.gov")
     }
     
     var taskType: DataTaskType {
@@ -41,7 +40,7 @@ extension NasaRequest: Request {
     var urlRequest: URLRequest? {
         guard
             let url = baseURL,
-            let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else {
             return nil
         }
@@ -51,7 +50,16 @@ extension NasaRequest: Request {
             return URLQueryItem(name: key, value: value)
         }
         
+        guard let componentURL = components.url else {
+            return nil
+        }
         
-        return nil
+        var request = URLRequest(url: componentURL)
+        request.httpMethod = method.rawValue
+        for (key, value) in httpHeaders {
+            request.addValue(value, forHTTPHeaderField: key)
+        }
+        
+        return request
     }
 }
