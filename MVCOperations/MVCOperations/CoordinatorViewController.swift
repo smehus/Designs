@@ -16,7 +16,7 @@ private enum State {
 
 internal final class CoordinatorViewController: UIViewController {
     
-    var state: State {
+    private var state: State? {
         didSet {
             
         }
