@@ -19,6 +19,9 @@
 		A51D66DA1FEC12840044C9AE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66D91FEC12840044C9AE /* Session.swift */; };
 		A51D66DC1FEC14FB0044C9AE /* NasaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66DB1FEC14FB0044C9AE /* NasaRequest.swift */; };
 		A51D66DF1FEC15420044C9AE /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66DE1FEC15420044C9AE /* Application.swift */; };
+		A51D66E21FEC2C940044C9AE /* NasaImageFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66E11FEC2C940044C9AE /* NasaImageFacade.swift */; };
+		A51D66E41FEC2EC10044C9AE /* Content.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51D66E31FEC2EC10044C9AE /* Content.storyboard */; };
+		A51D66E71FEC2F060044C9AE /* ContentSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66E61FEC2F060044C9AE /* ContentSplitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		A51D66D91FEC12840044C9AE /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		A51D66DB1FEC14FB0044C9AE /* NasaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaRequest.swift; sourceTree = "<group>"; };
 		A51D66DE1FEC15420044C9AE /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		A51D66E11FEC2C940044C9AE /* NasaImageFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageFacade.swift; sourceTree = "<group>"; };
+		A51D66E31FEC2EC10044C9AE /* Content.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Content.storyboard; sourceTree = "<group>"; };
+		A51D66E61FEC2F060044C9AE /* ContentSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSplitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 		A51D66B01FEBF3230044C9AE /* MVCOperations */ = {
 			isa = PBXGroup;
 			children = (
+				A51D66E51FEC2EEE0044C9AE /* ContentControllers */,
 				A51D66DD1FEC15380044C9AE /* Application */,
 				A51D66D81FEC126D0044C9AE /* Networking */,
 				A51D66C71FEBF8190044C9AE /* Operations */,
@@ -113,8 +120,18 @@
 			isa = PBXGroup;
 			children = (
 				A51D66DB1FEC14FB0044C9AE /* NasaRequest.swift */,
+				A51D66E11FEC2C940044C9AE /* NasaImageFacade.swift */,
 			);
 			path = Facades;
+			sourceTree = "<group>";
+		};
+		A51D66E51FEC2EEE0044C9AE /* ContentControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A51D66E31FEC2EC10044C9AE /* Content.storyboard */,
+				A51D66E61FEC2F060044C9AE /* ContentSplitViewController.swift */,
+			);
+			path = ContentControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51D66E41FEC2EC10044C9AE /* Content.storyboard in Resources */,
 				A51D66BC1FEBF3230044C9AE /* LaunchScreen.storyboard in Resources */,
 				A51D66B91FEBF3230044C9AE /* Assets.xcassets in Resources */,
 				A51D66B71FEBF3230044C9AE /* Main.storyboard in Resources */,
@@ -189,8 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51D66E21FEC2C940044C9AE /* NasaImageFacade.swift in Sources */,
 				A51D66DF1FEC15420044C9AE /* Application.swift in Sources */,
 				A51D66DC1FEC14FB0044C9AE /* NasaRequest.swift in Sources */,
+				A51D66E71FEC2F060044C9AE /* ContentSplitViewController.swift in Sources */,
 				A51D66DA1FEC12840044C9AE /* Session.swift in Sources */,
 				A51D66B41FEBF3230044C9AE /* CoordinatorViewController.swift in Sources */,
 				A51D66B21FEBF3230044C9AE /* AppDelegate.swift in Sources */,

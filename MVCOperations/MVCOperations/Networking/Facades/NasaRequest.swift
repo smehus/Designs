@@ -67,6 +67,8 @@ extension NasaRequest: Request {
             do {
                 let data = try JSONSerialization.data(withJSONObject: body, options: [])
                 request.httpBody = data
+            } catch {
+                return nil
             }
         }
         

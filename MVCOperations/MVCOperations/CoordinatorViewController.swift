@@ -25,13 +25,14 @@ internal final class CoordinatorViewController: UIViewController {
         return LoadingViewController.instantiateFromStoryboard()
     }()
     
+    lazy var contentViewController: ContentSplitViewController = {
+        return ContentSplitViewController.instantiateFromStoryboard()
+    }()
+    
     private var state: State = .none {
         didSet {
-            switch state {
-            case .loading:
-                handleLoadingState()
-            default: break
-            }
+            guard state != oldValue else { return }
+            handleStateChange()
         }
     }
 
@@ -48,13 +49,25 @@ internal final class CoordinatorViewController: UIViewController {
 
 extension CoordinatorViewController {
     
-    private func handleLoadingState() {
+    private func handleStateChange() {
         guard let queue = coordinatorQueue else {
             assertionFailure("Missing Coordinator Operation Queueu")
             return
         }
         
-        let addChildOperation = AddChildOperation(parent: self, child: loadingViewController, currentChild: currentContext)
+        var nextController: UIViewController
+        switch state {
+        case .loading:
+            nextController = loadingViewController
+        case .success:
+            nextController = contentViewController
+        case .none:
+            nextController = contentViewController
+        case .error:
+            nextController = contentViewController
+        }
+        
+        let addChildOperation = AddChildOperation(parent: self, child: nextController, currentChild: currentContext)
         queue.addOperation(addChildOperation)
     }
 }
