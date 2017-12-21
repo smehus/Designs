@@ -13,7 +13,7 @@ enum OperationResult<T> {
     case success(result: T)
 }
 
-class SMOperation<T>: Operation {
+class ObservedOperation<T>: Operation {
     
     private let operationObserver: (T) -> ()
     
