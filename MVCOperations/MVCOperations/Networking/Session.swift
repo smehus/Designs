@@ -8,14 +8,21 @@
 
 import Foundation
 
+enum DataTaskType {
+    case dataTask
+}
+
 protocol Request {
+    var taskType: DataTaskType { get }
     var urlRequest: URLRequest? { get }
 }
 
 protocol Session {
     associatedtype DataType
-    func execute(request: Request, handler: (DataType?, Error?) -> ())
+    func execute(request: Request, handler: @escaping (DataType?, Error?) -> ())
 }
+
+typealias JSON = [String: Any]
 
 class NetworkSession: Session {
     
@@ -26,14 +33,33 @@ class NetworkSession: Session {
         urlSession = URLSession(configuration: config)
     }
     
-    func execute(request: Request, handler: (Data?, Error?) -> ()) {
+    func execute(request: Request, handler: @escaping (JSON?, Error?) -> ()) {
         guard let urlRequest = request.urlRequest else {
             handler(nil, nil)
             return
         }
         
-        
-        
+        switch request.taskType {
+        case .dataTask:
+            dataTask(with: urlRequest, handler: handler)
+        }
     }
     
+    private func dataTask(with request: URLRequest, handler: @escaping (JSON?, Error?) -> ()) {
+        let task = urlSession.dataTask(with: request) { (data, res, error) in
+            guard let data = data else {
+                handler(nil, error)
+                return
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                handler(json, nil)
+            } catch let error {
+                handler(nil, error)
+            }
+        }
+        
+        task.resume()
+    }
 }

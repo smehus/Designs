@@ -14,6 +14,10 @@ enum NasaRequest {
 
 extension NasaRequest: Request {
     
+    var taskType: DataTaskType {
+        return .dataTask
+    }
+    
     var urlRequest: URLRequest? {
         return nil
     }

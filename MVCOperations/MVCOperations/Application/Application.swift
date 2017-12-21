@@ -6,14 +6,21 @@
 //  Copyright © 2017 Mehus. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Used for general startup tasks and injecting initial dependencies
 struct Application {
     
+    // Run startup operations
     func run() -> Bool {
+        guard
+            let delegate = UIApplication.shared.delegate,
+            let initialController = delegate.window??.rootViewController as? CoordinatorViewController
+        else {
+            return true
+        }
         
-        // Run startup operations
+        
         
         return true
     }
