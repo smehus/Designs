@@ -27,6 +27,7 @@ class ObservedOperation<T>: Operation {
             operationHandler(.canceled)
             return
         }
+        
         execute()
     }
     
@@ -39,7 +40,6 @@ class ObservedOperation<T>: Operation {
             operationHandler(.canceled)
             return
         }
-        
         
         if errors.isEmpty {
             operationHandler(.success(result: data))

@@ -45,7 +45,6 @@ extension NasaRequest: Request {
             return nil
         }
         
-        
         components.queryItems = params.map { (key, value) -> URLQueryItem in
             return URLQueryItem(name: key, value: value)
         }
