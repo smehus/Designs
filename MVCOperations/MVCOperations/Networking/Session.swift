@@ -12,7 +12,12 @@ enum DataTaskType {
     case dataTask
 }
 
+enum HTTPMethod: String {
+    case get = "GET"
+}
+
 protocol Request {
+    var method: HTTPMethod { get }
     var taskType: DataTaskType { get }
     var urlRequest: URLRequest? { get }
 }

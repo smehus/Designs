@@ -95,8 +95,8 @@
 		A51D66D81FEC126D0044C9AE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A51D66E01FEC1A290044C9AE /* Facades */,
 				A51D66D91FEC12840044C9AE /* Session.swift */,
-				A51D66DB1FEC14FB0044C9AE /* NasaRequest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -107,6 +107,14 @@
 				A51D66DE1FEC15420044C9AE /* Application.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		A51D66E01FEC1A290044C9AE /* Facades */ = {
+			isa = PBXGroup;
+			children = (
+				A51D66DB1FEC14FB0044C9AE /* NasaRequest.swift */,
+			);
+			path = Facades;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -20,6 +20,8 @@ struct Application {
             return true
         }
         
+        let session = NetworkSession()
+        
         
         
         return true
