@@ -11,6 +11,7 @@ import Foundation
 enum OperationResult<T> {
     case failed(errors: [Error])
     case success(result: T?)
+    case canceled
 }
 
 class ObservedOperation<T>: Operation {
@@ -22,7 +23,10 @@ class ObservedOperation<T>: Operation {
     }
     
     override func main() {
-        guard !isCancelled else { return }
+        guard !isCancelled else {
+            operationHandler(.canceled)
+            return
+        }
         execute()
     }
     
@@ -31,6 +35,12 @@ class ObservedOperation<T>: Operation {
     }
 
     func finish(data: T?, errors: [Error] = []) {
+        guard !isCancelled else {
+            operationHandler(.canceled)
+            return
+        }
+        
+        
         if errors.isEmpty {
             operationHandler(.success(result: data))
         } else {
