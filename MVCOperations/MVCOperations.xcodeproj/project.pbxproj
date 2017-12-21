@@ -16,6 +16,9 @@
 		A51D66C61FEBF3FF0044C9AE /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66C51FEBF3FF0044C9AE /* StoryboardInstantiable.swift */; };
 		A51D66D51FEC04C80044C9AE /* ObservedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66D41FEC04C80044C9AE /* ObservedOperation.swift */; };
 		A51D66D71FEC08200044C9AE /* AddChildOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66D61FEC08200044C9AE /* AddChildOperation.swift */; };
+		A51D66DA1FEC12840044C9AE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66D91FEC12840044C9AE /* Session.swift */; };
+		A51D66DC1FEC14FB0044C9AE /* NasaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66DB1FEC14FB0044C9AE /* NasaRequest.swift */; };
+		A51D66DF1FEC15420044C9AE /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66DE1FEC15420044C9AE /* Application.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		A51D66C51FEBF3FF0044C9AE /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		A51D66D41FEC04C80044C9AE /* ObservedOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservedOperation.swift; sourceTree = "<group>"; };
 		A51D66D61FEC08200044C9AE /* AddChildOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildOperation.swift; sourceTree = "<group>"; };
+		A51D66D91FEC12840044C9AE /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		A51D66DB1FEC14FB0044C9AE /* NasaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaRequest.swift; sourceTree = "<group>"; };
+		A51D66DE1FEC15420044C9AE /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,8 @@
 		A51D66B01FEBF3230044C9AE /* MVCOperations */ = {
 			isa = PBXGroup;
 			children = (
+				A51D66DD1FEC15380044C9AE /* Application */,
+				A51D66D81FEC126D0044C9AE /* Networking */,
 				A51D66C71FEBF8190044C9AE /* Operations */,
 				A51D66B11FEBF3230044C9AE /* AppDelegate.swift */,
 				A51D66B31FEBF3230044C9AE /* CoordinatorViewController.swift */,
@@ -82,6 +90,23 @@
 				A51D66D61FEC08200044C9AE /* AddChildOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		A51D66D81FEC126D0044C9AE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A51D66D91FEC12840044C9AE /* Session.swift */,
+				A51D66DB1FEC14FB0044C9AE /* NasaRequest.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A51D66DD1FEC15380044C9AE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A51D66DE1FEC15420044C9AE /* Application.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +181,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51D66DF1FEC15420044C9AE /* Application.swift in Sources */,
+				A51D66DC1FEC14FB0044C9AE /* NasaRequest.swift in Sources */,
+				A51D66DA1FEC12840044C9AE /* Session.swift in Sources */,
 				A51D66B41FEBF3230044C9AE /* CoordinatorViewController.swift in Sources */,
 				A51D66B21FEBF3230044C9AE /* AppDelegate.swift in Sources */,
 				A51D66D71FEC08200044C9AE /* AddChildOperation.swift in Sources */,
