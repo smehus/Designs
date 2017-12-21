@@ -14,7 +14,7 @@
 		A51D66BC1FEBF3230044C9AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51D66BA1FEBF3230044C9AE /* LaunchScreen.storyboard */; };
 		A51D66C41FEBF3DD0044C9AE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66C31FEBF3DD0044C9AE /* LoadingViewController.swift */; };
 		A51D66C61FEBF3FF0044C9AE /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66C51FEBF3FF0044C9AE /* StoryboardInstantiable.swift */; };
-		A51D66D31FEBFF5C0044C9AE /* ObservedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66D21FEBFF5C0044C9AE /* ObservedOperation.swift */; };
+		A51D66D51FEC04C80044C9AE /* ObservedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66D41FEC04C80044C9AE /* ObservedOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		A51D66BD1FEBF3230044C9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A51D66C31FEBF3DD0044C9AE /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		A51D66C51FEBF3FF0044C9AE /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
-		A51D66D21FEBFF5C0044C9AE /* ObservedOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedOperation.swift; sourceTree = "<group>"; };
+		A51D66D41FEC04C80044C9AE /* ObservedOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservedOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 		A51D66C71FEBF8190044C9AE /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				A51D66D21FEBFF5C0044C9AE /* ObservedOperation.swift */,
+				A51D66D41FEC04C80044C9AE /* ObservedOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -156,8 +156,8 @@
 				A51D66B41FEBF3230044C9AE /* CoordinatorViewController.swift in Sources */,
 				A51D66B21FEBF3230044C9AE /* AppDelegate.swift in Sources */,
 				A51D66C61FEBF3FF0044C9AE /* StoryboardInstantiable.swift in Sources */,
+				A51D66D51FEC04C80044C9AE /* ObservedOperation.swift in Sources */,
 				A51D66C41FEBF3DD0044C9AE /* LoadingViewController.swift in Sources */,
-				A51D66D31FEBFF5C0044C9AE /* ObservedOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
