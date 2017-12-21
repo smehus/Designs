@@ -9,13 +9,19 @@
 
 import UIKit
 
-class LoadingViewController: UIViewController {
+/// Shown when data is being loaded
+internal final class LoadingViewController: UIViewController {
     
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .blue
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        activityIndicator.startAnimating()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        activityIndicator.stopAnimating()
     }
 }
 
