@@ -37,6 +37,10 @@ extension NasaRequest: Request {
         return .dataTask
     }
     
+    var httpBody: JSON? {
+        return [:]
+    }
+    
     var urlRequest: URLRequest? {
         guard
             let url = baseURL,
@@ -57,6 +61,13 @@ extension NasaRequest: Request {
         request.httpMethod = method.rawValue
         for (key, value) in httpHeaders {
             request.addValue(value, forHTTPHeaderField: key)
+        }
+        
+        if let body = httpBody {
+            do {
+                let data = try JSONSerialization.data(withJSONObject: body, options: [])
+                request.httpBody = data
+            }
         }
         
         return request
