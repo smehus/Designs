@@ -14,15 +14,18 @@ class JSONProcessor {
         
     }
     
-    private let handler: ([NASAModel]) -> ()
+    private let handler: ([NASAModel]?, [Error]?) -> ()
     
-    init(completion: @escaping ([NASAModel]) -> ()) {
+    init(completion: @escaping ([NASAModel]?, [Error]?) -> ()) {
         self.handler = completion
     }
     
     func process() -> ((JSON?, Error?) -> ()) {
         return { [weak self] json, error in
-            self?.handler([])
+            
+            
+            
+            self?.handler([], nil)
         }
     }
 }
@@ -44,7 +47,7 @@ internal final class NasaImageFacade {
             completion()
         }
         
-        let operation = SearchOperation(query: "", session: session, handler: handler)
+        let operation = ImageSearchOperation(query: "", session: session, handler: handler)
         operationQueue.addOperation(operation)
     }
 }
@@ -53,7 +56,7 @@ struct NASAModel {
     
 }
 
-class SearchOperation: ObservedOperation<[NASAModel]> {
+class ImageSearchOperation: ObservedOperation<[NASAModel]> {
     
     private var searchString: String?
     private var session: Session?
@@ -66,11 +69,11 @@ class SearchOperation: ObservedOperation<[NASAModel]> {
     
     
     override func execute() {
-        guard let session = session, let query = searchString else { finish(data: nil); return }
-        let processor = JSONProcessor { [weak self] models in
-            self?.finish(data: models)
-        }
         
+        guard let session = session, let query = searchString else { finish(data: nil); return }
+        let processor = JSONProcessor { [weak self] models, errors in
+            self?.finish(data: models, errors: errors ?? [])
+        }
         
         let request = NasaRequest.images(query: query)
         session.execute(request: request, handler: processor.process())

@@ -19,10 +19,11 @@ extension NasaRequest: Request {
     }
     
     var apiKey: String {
+        /// Not really needed
         return "NfQJhPNcBzPoqmZ4Kb8Uqdcnf5sVdIZqQziQYt7k"
     }
     
-    var params: [String: String] {
+    var parameters: [String: String] {
         switch self {
         case .images(let query):
             return ["search" : query]
@@ -39,39 +40,5 @@ extension NasaRequest: Request {
     
     var httpBody: JSON? {
         return [:]
-    }
-    
-    var urlRequest: URLRequest? {
-        guard
-            let url = baseURL,
-            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        else {
-            return nil
-        }
-        
-        components.queryItems = params.map { (key, value) -> URLQueryItem in
-            return URLQueryItem(name: key, value: value)
-        }
-        
-        guard let componentURL = components.url else {
-            return nil
-        }
-        
-        var request = URLRequest(url: componentURL)
-        request.httpMethod = method.rawValue
-        for (key, value) in httpHeaders {
-            request.addValue(value, forHTTPHeaderField: key)
-        }
-        
-        if let body = httpBody {
-            do {
-                let data = try JSONSerialization.data(withJSONObject: body, options: [])
-                request.httpBody = data
-            } catch {
-                return nil
-            }
-        }
-        
-        return request
     }
 }
