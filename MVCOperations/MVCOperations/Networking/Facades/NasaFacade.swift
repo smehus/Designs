@@ -44,20 +44,20 @@ internal final class NasaFacade {
 
     func fetchAPOD(for date: Date, completion: @escaping () -> ()) {
 
-//        let handler: (OperationResult<[APOD]>) -> () = { result in
+        let handler: (OperationResult<[APOD]>) -> () = { result in
+            completion()
+        }
+
+        let operation = APODOperation(date: date, session: session, handler: handler)
+        operationQueue.addOperation(operation)
+        
+        
+//        let processor = APODJSONProcessor { models, errors in
 //            completion()
 //        }
 //
-//        let operation = APODOperation(date: date, session: session, handler: handler)
-//        operationQueue.addOperation(operation)
-        
-        
-        let processor = APODJSONProcessor { models, errors in
-            completion()
-        }
-        
-        let request = NasaRequest.apod(date: date)
-        session.execute(request: request, handler: processor.process())
+//        let request = NasaRequest.apod(date: date)
+//        session.execute(request: request, handler: processor.process())
     }
 }
 
@@ -81,10 +81,15 @@ protocol ListDataSource {
 }
 
 struct APOD {
-    
+    let copyright: String
+    let date: String
+    let explanation: String
+    let hdurl: String
+    let media_type: String
+    let service_version: String
+    let title: String
+    let url: String
 }
-
-
 
 class APODOperation: ObservedOperation<[APOD]> {
     

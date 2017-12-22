@@ -35,10 +35,7 @@ class NetworkSession: Session {
     }
     
     private func dataTask(with request: URLRequest, handler: @escaping (JSON?, Error?) -> ()) {
-        print("data task with \(request.url?.absoluteString)")
         urlSession.dataTask(with: request) { (data, res, error) in
-            
-            print("RES \(String(describing: res))")
             if let error = error {
                 print("errrror \(error)")
                 handler(nil, error)
