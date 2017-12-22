@@ -22,6 +22,8 @@
 		A51D66E21FEC2C940044C9AE /* NasaImageFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66E11FEC2C940044C9AE /* NasaImageFacade.swift */; };
 		A51D66E41FEC2EC10044C9AE /* Content.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51D66E31FEC2EC10044C9AE /* Content.storyboard */; };
 		A51D66E71FEC2F060044C9AE /* ContentSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66E61FEC2F060044C9AE /* ContentSplitViewController.swift */; };
+		A51D66EA1FED54200044C9AE /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66E91FED54200044C9AE /* DateFormatter+Extensions.swift */; };
+		A51D66EC1FED54510044C9AE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D66EB1FED54510044C9AE /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		A51D66E11FEC2C940044C9AE /* NasaImageFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageFacade.swift; sourceTree = "<group>"; };
 		A51D66E31FEC2EC10044C9AE /* Content.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Content.storyboard; sourceTree = "<group>"; };
 		A51D66E61FEC2F060044C9AE /* ContentSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSplitViewController.swift; sourceTree = "<group>"; };
+		A51D66E91FED54200044C9AE /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		A51D66EB1FED54510044C9AE /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		A51D66B01FEBF3230044C9AE /* MVCOperations */ = {
 			isa = PBXGroup;
 			children = (
+				A51D66E81FED54120044C9AE /* Extensions */,
 				A51D66E51FEC2EEE0044C9AE /* ContentControllers */,
 				A51D66DD1FEC15380044C9AE /* Application */,
 				A51D66D81FEC126D0044C9AE /* Networking */,
@@ -104,6 +109,7 @@
 			children = (
 				A51D66E01FEC1A290044C9AE /* Facades */,
 				A51D66D91FEC12840044C9AE /* Session.swift */,
+				A51D66EB1FED54510044C9AE /* Request.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -132,6 +138,14 @@
 				A51D66E61FEC2F060044C9AE /* ContentSplitViewController.swift */,
 			);
 			path = ContentControllers;
+			sourceTree = "<group>";
+		};
+		A51D66E81FED54120044C9AE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A51D66E91FED54200044C9AE /* DateFormatter+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,7 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51D66E21FEC2C940044C9AE /* NasaImageFacade.swift in Sources */,
+				A51D66EC1FED54510044C9AE /* Request.swift in Sources */,
 				A51D66DF1FEC15420044C9AE /* Application.swift in Sources */,
+				A51D66EA1FED54200044C9AE /* DateFormatter+Extensions.swift in Sources */,
 				A51D66DC1FEC14FB0044C9AE /* NasaRequest.swift in Sources */,
 				A51D66E71FEC2F060044C9AE /* ContentSplitViewController.swift in Sources */,
 				A51D66DA1FEC12840044C9AE /* Session.swift in Sources */,

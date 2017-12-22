@@ -10,6 +10,7 @@ import Foundation
 
 enum NasaRequest {
     case images(query: String)
+    case apod(date: Date)
 }
 
 extension NasaRequest: Request {
@@ -27,11 +28,19 @@ extension NasaRequest: Request {
         switch self {
         case .images(let query):
             return ["search" : query]
+        case .apod(let date):
+            let formattedDate = DateFormatter.apodDateFormatter.string(from: date)
+            return ["date": formattedDate, "api_key" : apiKey]
         }
     }
     
     var baseURL: URL? {
-        return URL(string: "https://images-api.nasa.gov")
+        switch self {
+        case .apod:
+            return URL(string: "https://api.nasa.gov/planetary/apod")
+        case .images:
+            return URL(string: "https://images-api.nasa.gov")
+        }
     }
     
     var taskType: DataTaskType {
