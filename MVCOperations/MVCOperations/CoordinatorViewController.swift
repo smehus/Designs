@@ -17,6 +17,8 @@ private enum State {
 
 internal final class CoordinatorViewController: UIViewController {
     
+    var dataFacade: NasaFacade?
+    
     /// Serial Queue for adding and removing children
     private var coordinatorQueue: OperationQueue?
     private var currentContext: UIViewController?
@@ -44,6 +46,15 @@ internal final class CoordinatorViewController: UIViewController {
         coordinatorQueue?.maxConcurrentOperationCount = 1
         
         state = .loading
+        
+        loadData()
+    }
+    
+    private func loadData() {
+        
+        dataFacade?.fetchAPOD(for: Date(), completion: {
+            
+        })
     }
 }
 

@@ -48,6 +48,6 @@ extension NasaRequest: Request {
     }
     
     var httpBody: JSON? {
-        return [:]
+        return nil
     }
 }

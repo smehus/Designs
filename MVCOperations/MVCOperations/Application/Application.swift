@@ -20,8 +20,11 @@ struct Application {
             return true
         }
         
-        let session = NetworkSession()
+        let facadeQueue = OperationQueue()
         
+        let session = NetworkSession()
+        let facade = NasaFacade(session: session, queue: facadeQueue)
+        initialController.dataFacade = facade
         
         
         return true

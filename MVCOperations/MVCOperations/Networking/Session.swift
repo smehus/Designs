@@ -19,8 +19,7 @@ class NetworkSession: Session {
     private let urlSession: URLSession
     
     init() {
-        let config = URLSessionConfiguration.default
-        urlSession = URLSession(configuration: config)
+        urlSession = URLSession(configuration: .default)
     }
     
     func execute(request: Request, handler: @escaping (JSON?, Error?) -> ()) {
@@ -36,8 +35,19 @@ class NetworkSession: Session {
     }
     
     private func dataTask(with request: URLRequest, handler: @escaping (JSON?, Error?) -> ()) {
-        let task = urlSession.dataTask(with: request) { (data, res, error) in
+        print("data task with \(request.url?.absoluteString)")
+        urlSession.dataTask(with: request) { (data, res, error) in
+            
+            print("RES \(String(describing: res))")
+            if let error = error {
+                print("errrror \(error)")
+                handler(nil, error)
+                return
+                
+            }
+            
             guard let data = data else {
+                print("BAD DATA")
                 handler(nil, error)
                 return
             }
@@ -48,8 +58,6 @@ class NetworkSession: Session {
             } catch let error {
                 handler(nil, error)
             }
-        }
-        
-        task.resume()
+        }.resume()
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 extension DateFormatter {
     static var apodDateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-DD"
+        formatter.dateFormat = "YYYY-MM-dd"
         return formatter
     }
 }
