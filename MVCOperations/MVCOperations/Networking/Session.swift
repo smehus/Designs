@@ -9,10 +9,13 @@
 import Foundation
 
 protocol Session {
-    func execute(request: Request, handler: @escaping (JSON?, Error?) -> ())
+    func execute(request: Request, handler: @escaping (Result<Data>) -> ())
 }
 
-typealias JSON = [String: Any]
+enum Result<T> {
+    case failed(error: Error)
+    case success(data: T)
+}
 
 class NetworkSession: Session {
     
@@ -22,39 +25,34 @@ class NetworkSession: Session {
         urlSession = URLSession(configuration: .default)
     }
     
-    func execute(request: Request, handler: @escaping (JSON?, Error?) -> ()) {
+    func execute(request: Request, handler: @escaping (Result<Data>) -> ()) {
         guard let urlRequest = request.urlRequest else {
-            handler(nil, nil)
+            handler(.failed(error: NSError(domain: "Failed", code: 0, userInfo: nil)))
             return
         }
         
-        switch request.taskType {
-        case .dataTask:
-            dataTask(with: urlRequest, handler: handler)
-        }
-    }
-    
-    private func dataTask(with request: URLRequest, handler: @escaping (JSON?, Error?) -> ()) {
-        urlSession.dataTask(with: request) { (data, res, error) in
+        urlSession.dataTask(with: urlRequest) { (data, res, error) in
             if let error = error {
-                print("errrror \(error)")
-                handler(nil, error)
+                handler(.failed(error: error))
                 return
-                
-            }
-            
-            guard let data = data else {
-                print("BAD DATA")
-                handler(nil, error)
-                return
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as! JSON
-                handler(json, nil)
-            } catch let error {
-                handler(nil, error)
+            } else if let data = data {
+                handler(.success(data: data))
             }
         }.resume()
+    }
+}
+
+class JSONProcessor<T: Codable> {
+    
+    private let decoder = JSONDecoder()
+    
+    func process(data: Data) -> T? {
+        do {
+            let model = try decoder.decode(T.self, from: data)
+            return model
+        } catch let error {
+            print("🚫 Error decoding apod \(error.localizedDescription)")
+            return nil
+        }
     }
 }

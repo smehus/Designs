@@ -16,6 +16,8 @@ enum HTTPMethod: String {
     case get = "GET"
 }
 
+typealias JSON = [String: Any]
+
 protocol Request {
     var baseURL: URL? { get }
     var method: HTTPMethod { get }

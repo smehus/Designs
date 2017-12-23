@@ -36,6 +36,7 @@ class ObservedOperation<T>: Operation {
     }
 
     func finish(data: T?, errors: [Error] = []) {
+        print("FINISHED OPERATION ")
         guard !isCancelled else {
             operationHandler(.canceled)
             return
