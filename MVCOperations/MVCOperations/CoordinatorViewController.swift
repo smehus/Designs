@@ -8,11 +8,23 @@
 
 import UIKit
 
-private enum State {
+private enum CoordinatorState {
     case none
     case loading
     case error
-    case success
+    case success(dataSource: AnyListDataSource<APOD>)
+}
+
+private func !=(lhs: CoordinatorState, rhs: CoordinatorState) -> Bool {
+    switch (lhs, rhs) {
+    case (.none, .none),
+         (.loading, .loading),
+         (.error, .error),
+         (.success, .success):
+        return false
+    default:
+        return true
+    }
 }
 
 internal final class CoordinatorViewController: UIViewController {
@@ -31,7 +43,7 @@ internal final class CoordinatorViewController: UIViewController {
         return ContentSplitViewController.instantiateFromStoryboard()
     }()
     
-    private var state: State = .none {
+    private var state: CoordinatorState = .none {
         didSet {
             guard state != oldValue else { return }
             handleStateChange()
@@ -52,8 +64,16 @@ internal final class CoordinatorViewController: UIViewController {
     
     private func loadData() {
         
-        dataFacade?.fetchWeeksAPODS(for: Date(), completion: {
-            print("FINISHED FETCHING APODS")
+        dataFacade?.fetchWeeksAPODS(for: Date(), completion: { dataSource, error in
+            guard
+                let source = dataSource,
+                error == nil
+            else {
+                print("Data Facade failed to do stuff")
+                return
+            }
+            
+            
         })
     }
 }

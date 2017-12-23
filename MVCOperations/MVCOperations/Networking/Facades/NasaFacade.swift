@@ -8,15 +8,17 @@
 
 import Foundation
 
-//TODO: Use a protocol 
+enum FacadeError: Error {
+    case failed
+}
+
+//TODO: Use a protocol
 internal final class NasaFacade {
     
     private let session: Session
     private let operationQueue: OperationQueue
     private let today = Date()
     private var apods = [APOD]()
-    
-    private var runningOperations = [Operation]()
     
     init(session: Session, queue: OperationQueue) {
         self.session = session
@@ -31,23 +33,22 @@ internal final class NasaFacade {
         operationQueue.addOperation(operation)
     }
     
-    func fetchWeeksAPODS(for date: Date, completion: @escaping () -> ()) {
+    func fetchWeeksAPODS(for date: Date, completion: @escaping (APODListDataSource?, Error?) -> ()) {
         guard var firstDate = today.day(fromInterval: -7) else {
-            completion()
+            completion(nil, FacadeError.failed)
             return
         }
         
         
-        let gate = GateOperation { _ in
-            print("APODS COUNT \(self.apods.count)")
-            completion()
+        /// The JSON Processor was getting deallocated because the operation was getting finished immediately and released form the queue
+        let gate = GateOperation { [unowned self] _ in
+            let dataSource = APODListDataSource(apods: self.apods)
+            completion(dataSource, nil)
         }
         
-        runningOperations.append(gate)
         Loop: while firstDate <= today {
             
             let operation = APODOperation(date: firstDate, session: session, handler: { [weak self] (result) in
-                print("APOD OPERATION RETURN")
                 guard
                     case let OperationResult.success(model) = result,
                     let apod = model
@@ -61,7 +62,6 @@ internal final class NasaFacade {
             gate.addDependency(operation)
             
             operationQueue.addOperation(operation)
-            runningOperations.append(operation)
             
             guard let newDate = firstDate.dayAfter else {
                 break Loop
@@ -76,22 +76,37 @@ internal final class NasaFacade {
     }
 }
 
-class GateOperation: ObservedOperation<Bool> {
+class GateOperation: ObservedOperation<()> {
     override func execute() {
         finish(data: nil, errors: [])
     }
 }
 
-extension NasaFacade: ListDataSource {
+struct APODListDataSource: ListDataSource {
+    
+    private let apods: [APOD]
+    
+    init(apods: [APOD]) {
+        self.apods = apods
+    }
+    
     var numberOfSections: Int {
         return 1
     }
     
     func numberOfRows(for section: Int) -> Int {
-        return 10
+        return apods.count
     }
+    
     func item(at indexPath: IndexPath) -> APOD? {
-        return nil
+        guard
+            indexPath.section == 0,
+            indexPath.row < apods.count
+        else {
+            return nil
+        }
+        
+        return apods[indexPath.row]
     }
 }
 

@@ -20,6 +20,7 @@ class ObservedOperation<T>: Operation {
     
     private let operationHandler: ((OperationResult<T>) -> ())?
 
+// Can just call willChange instead of adding a new registered key
 //    @objc class func keyPathsForValuesAffectingIsFinished() -> Set<NSObject> {
 //        return ["hasFinished" as NSObject]
 //    }
