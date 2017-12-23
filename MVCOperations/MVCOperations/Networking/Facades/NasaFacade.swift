@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+//TODO: Use a protocol 
 internal final class NasaFacade {
     
     private let session: Session
