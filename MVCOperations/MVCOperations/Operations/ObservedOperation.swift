@@ -19,22 +19,18 @@ class ObservedOperation<T>: Operation {
     var operationName = ""
     
     private let operationHandler: ((OperationResult<T>) -> ())?
+
+//    @objc class func keyPathsForValuesAffectingIsFinished() -> Set<NSObject> {
+//        return ["hasFinished" as NSObject]
+//    }
     
-    private var _hasFinishedB: Bool = false
-    
-    @objc class func keyPathsForValuesAffectingIsFinished() -> Set<NSObject> {
-        return ["hasFinished" as NSObject]
-    }
-    
-    private var hasFinishedB: Bool {
-        get {
-            return _hasFinishedB
+    private var _finished: Bool = false {
+        willSet {
+            willChangeValue(forKey: "isFinished")
         }
         
-        set {
-            willChangeValue(forKey: "hasFinished")
-            _hasFinishedB = newValue
-            didChangeValue(forKey: "hasFinished")
+        didSet {
+            didChangeValue(forKey: "isFinished")
         }
     }
     
@@ -54,7 +50,7 @@ class ObservedOperation<T>: Operation {
     }
 
     override var isFinished: Bool {
-        return hasFinishedB
+        return _finished
     }
     
     func execute() {
@@ -62,7 +58,7 @@ class ObservedOperation<T>: Operation {
     }
 
     func finish(data: T?, errors: [Error] = []) {
-        hasFinishedB = true
+        _finished = true
         guard !isCancelled else {
             operationHandler?(.canceled)
             return
