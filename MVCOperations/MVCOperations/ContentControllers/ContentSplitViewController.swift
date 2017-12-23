@@ -18,16 +18,52 @@ class ContentSplitViewController: UISplitViewController {
         didSet {
             guard
                 let source = dataSource,
-                let nav = self.viewControllers.first as? UINavigationController,
-                let master = nav.viewControllers.first as? MasterTableViewController
+                let master = masterViewController
             else { return }
             
             master.dataSource = source
         }
     }
     
+    private var masterViewController: MasterTableViewController? {
+        return (viewControllers.first as? UINavigationController)?.viewControllers.first as? MasterTableViewController
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate = self
+        masterViewController?.delegate = self
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let identifier = segue.identifier,
+            let seg = Segues(rawValue: identifier)
+        else { return }
         
+        switch seg {
+        case .apodDetailSegue:
+            guard let apod = sender as? APOD else { return }
+            prepareDetail(segue: segue, apod: apod)
+        }
+    }
+    
+    private func prepareDetail(segue: UIStoryboardSegue, apod: APOD) {
+        guard let detail = segue.destination as? DetailViewController else { return }
+        detail.apod = apod
+    }
+   
+}
+
+extension ContentSplitViewController: UISplitViewControllerDelegate {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
+}
+
+extension ContentSplitViewController: MasterDelegate {
+    func didSelect(apod: APOD) {
+        performSegue(withIdentifier: Segues.apodDetailSegue.rawValue, sender: apod)
         
     }
 }

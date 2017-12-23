@@ -9,6 +9,13 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    var apod: APOD? {
+        didSet {
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
