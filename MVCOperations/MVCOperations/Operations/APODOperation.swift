@@ -15,11 +15,10 @@ class APODOperation: ObservedOperation<APOD> {
     
     convenience init(date: Date, session: Session, handler: ((OperationResult<APOD>) -> ())?) {
         self.init(handler: handler)
-        self.operationName = "APODOPERATION"
+        self.operationName = "APOD Operation"
         self.date = date
         self.session = session
     }
-    
     
     override func execute() {
         guard let session = session, let date = self.date else { finish(data: nil); return }
