@@ -38,7 +38,7 @@ internal final class NasaFacade: Facade {
     }
     
     func fetchWeeksAPODS(for date: Date, completion: @escaping (APODListDataSource?, Error?) -> ()) {
-        guard var firstDate = today.day(fromInterval: -7) else {
+        guard var firstDate = today.day(fromInterval: -30) else {
             completion(nil, FacadeError.failed)
             return
         }

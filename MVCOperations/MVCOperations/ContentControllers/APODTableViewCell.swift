@@ -17,7 +17,7 @@ class APODTableViewCell: UITableViewCell {
     }
     @IBOutlet private var apodTitleLabel: UILabel! {
         didSet {
-            apodTitleLabel.textColor = .white
+            apodTitleLabel.textColor = .black
             apodTitleLabel.text = ""
         }
     }
@@ -37,7 +37,8 @@ class APODTableViewCell: UITableViewCell {
     
     func downloadImage(with url: URL, queue: OperationQueue) {
         downloadImageOperation?.cancel()
-        
+        apodTitleLabel.textColor = .black
+        apodImageView.image = nil
         let downloadOperation = DownloadImageOperation(url: url) { [weak self] (image, imageURL) in
             guard
                 let image = image,
@@ -52,6 +53,7 @@ class APODTableViewCell: UITableViewCell {
             
             DispatchQueue.main.async {
                 self?.apodImageView.image = image
+                self?.apodTitleLabel.textColor = .white
             }
         }
         
