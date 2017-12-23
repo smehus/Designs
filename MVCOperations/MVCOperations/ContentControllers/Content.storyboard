@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfc-s2-Zbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-319" y="-43"/>
+            <point key="canvasLocation" x="-290" y="204"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="PPA-px-T5v">
@@ -49,6 +49,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="IvN-OK-cG1"/>
+                    <connections>
+                        <segue destination="wFv-XI-dVi" kind="showDetail" identifier="apodDetailSegue" id="DbT-bh-1dP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4T-hb-rof" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,4 +87,7 @@
             <point key="canvasLocation" x="-1272" y="-375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DbT-bh-1dP"/>
+    </inferredMetricsTieBreakers>
 </document>

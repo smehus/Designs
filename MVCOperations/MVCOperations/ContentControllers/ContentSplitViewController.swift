@@ -9,6 +9,10 @@
 import UIKit
 
 class ContentSplitViewController: UISplitViewController {
+    
+    private enum Segues: String {
+        case apodDetailSegue = "apodDetailSegue"
+    }
 
     var dataSource: AnyListDataSource<APOD>? {
         didSet {
@@ -22,8 +26,9 @@ class ContentSplitViewController: UISplitViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
     }
 }
 

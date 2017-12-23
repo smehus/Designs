@@ -73,7 +73,9 @@ internal final class CoordinatorViewController: UIViewController {
                 return
             }
             
-            self.state = .success(dataSource: AnyListDataSource<APOD>(concrete: source))
+            DispatchQueue.main.async {
+                self.state = .success(dataSource: AnyListDataSource<APOD>(concrete: source))
+            }
         })
     }
 }
