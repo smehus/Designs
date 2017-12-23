@@ -30,6 +30,8 @@
 		A573EA2E1FEDD5F5006097A4 /* APODOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573EA2D1FEDD5F5006097A4 /* APODOperation.swift */; };
 		A573EA311FEDD625006097A4 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573EA301FEDD625006097A4 /* ListDataSource.swift */; };
 		A5F341111FEEC388002D1B67 /* APODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341101FEEC388002D1B67 /* APODTableViewCell.swift */; };
+		A5F341131FEEC54E002D1B67 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341121FEEC54E002D1B67 /* UIImageView+Extensions.swift */; };
+		A5F341171FEECBD8002D1B67 /* DownloadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341161FEECBD8002D1B67 /* DownloadImageOperation.swift */; };
 		A5FE27341FEDEB22004773B5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,8 @@
 		A573EA2D1FEDD5F5006097A4 /* APODOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODOperation.swift; sourceTree = "<group>"; };
 		A573EA301FEDD625006097A4 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
 		A5F341101FEEC388002D1B67 /* APODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTableViewCell.swift; sourceTree = "<group>"; };
+		A5F341121FEEC54E002D1B67 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		A5F341161FEECBD8002D1B67 /* DownloadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageOperation.swift; sourceTree = "<group>"; };
 		A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +121,7 @@
 				A51D66D41FEC04C80044C9AE /* ObservedOperation.swift */,
 				A51D66D61FEC08200044C9AE /* AddChildOperation.swift */,
 				A573EA2D1FEDD5F5006097A4 /* APODOperation.swift */,
+				A5F341161FEECBD8002D1B67 /* DownloadImageOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			children = (
 				A51D66E91FED54200044C9AE /* DateFormatter+Extensions.swift */,
 				A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */,
+				A5F341121FEEC54E002D1B67 /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -259,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51D66E21FEC2C940044C9AE /* NasaFacade.swift in Sources */,
+				A5F341171FEECBD8002D1B67 /* DownloadImageOperation.swift in Sources */,
 				A51D66EC1FED54510044C9AE /* Request.swift in Sources */,
 				A573EA2E1FEDD5F5006097A4 /* APODOperation.swift in Sources */,
 				A51D66DF1FEC15420044C9AE /* Application.swift in Sources */,
@@ -273,6 +280,7 @@
 				A51D66DA1FEC12840044C9AE /* Session.swift in Sources */,
 				A51D66B41FEBF3230044C9AE /* CoordinatorViewController.swift in Sources */,
 				A51D66B21FEBF3230044C9AE /* AppDelegate.swift in Sources */,
+				A5F341131FEEC54E002D1B67 /* UIImageView+Extensions.swift in Sources */,
 				A54EB4FA1FEEAD690064754C /* MasterTableViewController.swift in Sources */,
 				A51D66D71FEC08200044C9AE /* AddChildOperation.swift in Sources */,
 				A51D66C61FEBF3FF0044C9AE /* StoryboardInstantiable.swift in Sources */,
