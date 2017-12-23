@@ -64,7 +64,7 @@ internal final class CoordinatorViewController: UIViewController {
     
     private func loadData() {
         
-        dataFacade?.fetchWeeksAPODS(for: Date(), completion: { dataSource, error in
+        dataFacade?.fetchWeeksAPODS(for: Date(), completion: { [unowned self] dataSource, error in
             guard
                 let source = dataSource,
                 error == nil
@@ -73,7 +73,7 @@ internal final class CoordinatorViewController: UIViewController {
                 return
             }
             
-            
+            self.state = .success(dataSource: AnyListDataSource<APOD>(concrete: source))
         })
     }
 }
