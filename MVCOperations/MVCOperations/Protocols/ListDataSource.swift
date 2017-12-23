@@ -6,7 +6,7 @@
 //  Copyright © 2017 Mehus. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ListDataSource {
     associatedtype DataType

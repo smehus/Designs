@@ -10,11 +10,20 @@ import UIKit
 
 class ContentSplitViewController: UISplitViewController {
 
-    var dataSource: AnyListDataSource<APOD>?
+    var dataSource: AnyListDataSource<APOD>? {
+        didSet {
+            guard
+                let source = dataSource,
+                let nav = self.viewControllers.first as? UINavigationController,
+                let master = nav.viewControllers.first as? MasterTableViewController
+            else { return }
+            
+            master.dataSource = source
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 }
 

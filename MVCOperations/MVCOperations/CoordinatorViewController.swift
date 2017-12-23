@@ -90,7 +90,8 @@ extension CoordinatorViewController {
         switch state {
         case .loading:
             nextController = loadingViewController
-        case .success:
+        case .success(let source):
+            contentViewController.dataSource = source
             nextController = contentViewController
         case .none:
             nextController = contentViewController

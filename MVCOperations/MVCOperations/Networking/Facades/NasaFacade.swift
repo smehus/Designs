@@ -8,12 +8,16 @@
 
 import Foundation
 
+protocol Facade {
+    init(session: Session, queue: OperationQueue)
+}
+
 enum FacadeError: Error {
     case failed
 }
 
 //TODO: Use a protocol
-internal final class NasaFacade {
+internal final class NasaFacade: Facade {
     
     private let session: Session
     private let operationQueue: OperationQueue
