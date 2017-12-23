@@ -27,6 +27,7 @@
 		A573EA2C1FEDD59A006097A4 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573EA2B1FEDD59A006097A4 /* APOD.swift */; };
 		A573EA2E1FEDD5F5006097A4 /* APODOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573EA2D1FEDD5F5006097A4 /* APODOperation.swift */; };
 		A573EA311FEDD625006097A4 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573EA301FEDD625006097A4 /* ListDataSource.swift */; };
+		A5FE27341FEDEB22004773B5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		A573EA2B1FEDD59A006097A4 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
 		A573EA2D1FEDD5F5006097A4 /* APODOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODOperation.swift; sourceTree = "<group>"; };
 		A573EA301FEDD625006097A4 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
+		A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				A51D66E91FED54200044C9AE /* DateFormatter+Extensions.swift */,
+				A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				A51D66EA1FED54200044C9AE /* DateFormatter+Extensions.swift in Sources */,
 				A573EA311FEDD625006097A4 /* ListDataSource.swift in Sources */,
 				A51D66DC1FEC14FB0044C9AE /* NasaRequest.swift in Sources */,
+				A5FE27341FEDEB22004773B5 /* Date+Extensions.swift in Sources */,
 				A51D66E71FEC2F060044C9AE /* ContentSplitViewController.swift in Sources */,
 				A51D66DA1FEC12840044C9AE /* Session.swift in Sources */,
 				A51D66B41FEBF3230044C9AE /* CoordinatorViewController.swift in Sources */,

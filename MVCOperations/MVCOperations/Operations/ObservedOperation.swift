@@ -16,19 +16,45 @@ enum OperationResult<T> {
 
 class ObservedOperation<T>: Operation {
     
-    private let operationHandler: (OperationResult<T>) -> ()
+    var operationName = ""
     
-    required init(handler: @escaping (OperationResult<T>) -> ()) {
+    private let operationHandler: ((OperationResult<T>) -> ())?
+    
+    private var _hasFinishedB: Bool = false
+    
+    @objc class func keyPathsForValuesAffectingIsFinished() -> Set<NSObject> {
+        return ["hasFinished" as NSObject]
+    }
+    
+    private var hasFinishedB: Bool {
+        get {
+            return _hasFinishedB
+        }
+        
+        set {
+            willChangeValue(forKey: "hasFinished")
+            _hasFinishedB = newValue
+            didChangeValue(forKey: "hasFinished")
+        }
+    }
+    
+    required init(handler: ((OperationResult<T>) -> ())?) {
         self.operationHandler = handler
     }
     
+
+    
     override func main() {
         guard !isCancelled else {
-            operationHandler(.canceled)
+            operationHandler?(.canceled)
             return
         }
         
         execute()
+    }
+
+    override var isFinished: Bool {
+        return hasFinishedB
     }
     
     func execute() {
@@ -36,29 +62,16 @@ class ObservedOperation<T>: Operation {
     }
 
     func finish(data: T?, errors: [Error] = []) {
-        print("FINISHED OPERATION ")
+        hasFinishedB = true
         guard !isCancelled else {
-            operationHandler(.canceled)
+            operationHandler?(.canceled)
             return
         }
         
         if errors.isEmpty {
-            operationHandler(.success(result: data))
+            operationHandler?(.success(result: data))
         } else {
-            operationHandler(.failed(errors: errors))
+            operationHandler?(.failed(errors: errors))
         }
-    }
-}
-
-/// Example
-class NasaOperation: ObservedOperation<String> {
-    
-    convenience init(data: String, handler: @escaping (OperationResult<String>) -> ()) {
-        self.init(handler: handler)
-    }
-    
-    override func execute() {
-        // Do stuff
-        finish(data: nil)
     }
 }

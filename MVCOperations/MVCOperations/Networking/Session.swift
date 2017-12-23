@@ -52,6 +52,13 @@ class JSONProcessor<T: Codable> {
             return model
         } catch let error {
             print("🚫 Error decoding apod \(error.localizedDescription)")
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                print("JSON FVERISON \(json)")
+            } catch {
+                print("FAILED TO SERIALIZE")
+            }
+            
             return nil
         }
     }

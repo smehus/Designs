@@ -52,8 +52,8 @@ internal final class CoordinatorViewController: UIViewController {
     
     private func loadData() {
         
-        dataFacade?.fetchAPOD(for: Date(), completion: {
-            
+        dataFacade?.fetchWeeksAPODS(for: Date(), completion: {
+            print("FINISHED FETCHING APODS")
         })
     }
 }

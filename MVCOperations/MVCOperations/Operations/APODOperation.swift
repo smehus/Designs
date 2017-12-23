@@ -13,8 +13,9 @@ class APODOperation: ObservedOperation<APOD> {
     private var date: Date?
     private var session: Session?
     
-    convenience init(date: Date, session: Session, handler: @escaping (OperationResult<APOD>) -> ()) {
+    convenience init(date: Date, session: Session, handler: ((OperationResult<APOD>) -> ())?) {
         self.init(handler: handler)
+        self.operationName = "APODOPERATION"
         self.date = date
         self.session = session
     }
@@ -24,13 +25,24 @@ class APODOperation: ObservedOperation<APOD> {
         let request = NasaRequest.apod(date: date)
         let jsonProcessor = JSONProcessor<APOD>()
         
-        session.execute(request: request) { (result) in
+        session.execute(request: request) { [weak self] (result) in
+            guard let _ = self else {
+                assertionFailure("Missing self")
+                return
+            }
+            
             switch result {
             case .failed(let error):
-                self.finish(data: nil, errors: [error])
+                self?.finish(data: nil, errors: [error])
             case .success(let data):
-                let apod = jsonProcessor.process(data: data)
-                self.finish(data: apod, errors: [])
+                guard let apod = jsonProcessor.process(data: data) else {
+                    print("❌ Failed to process data for \(String(describing: request.urlRequest))")
+                    self?.finish(data: nil, errors: [])
+                    return
+                }
+                
+//                print("FETCHED AND PARSED apod \(apod)")
+                self?.finish(data: apod, errors: [])
             }
         }
     }
