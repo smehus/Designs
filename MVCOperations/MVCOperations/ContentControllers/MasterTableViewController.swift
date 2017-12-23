@@ -38,12 +38,16 @@ class MasterTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdent", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: APODTableViewCell.self), for: indexPath) as! APODTableViewCell
         if let apod = dataSource?.item(at: indexPath) {
-            cell.textLabel?.text = apod.title
+            cell.configure(with: apod)
         }
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 68
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

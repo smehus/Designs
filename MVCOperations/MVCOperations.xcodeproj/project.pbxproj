@@ -29,6 +29,7 @@
 		A573EA2C1FEDD59A006097A4 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573EA2B1FEDD59A006097A4 /* APOD.swift */; };
 		A573EA2E1FEDD5F5006097A4 /* APODOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573EA2D1FEDD5F5006097A4 /* APODOperation.swift */; };
 		A573EA311FEDD625006097A4 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573EA301FEDD625006097A4 /* ListDataSource.swift */; };
+		A5F341111FEEC388002D1B67 /* APODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341101FEEC388002D1B67 /* APODTableViewCell.swift */; };
 		A5FE27341FEDEB22004773B5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		A573EA2B1FEDD59A006097A4 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
 		A573EA2D1FEDD5F5006097A4 /* APODOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODOperation.swift; sourceTree = "<group>"; };
 		A573EA301FEDD625006097A4 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
+		A5F341101FEEC388002D1B67 /* APODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTableViewCell.swift; sourceTree = "<group>"; };
 		A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +155,7 @@
 				A51D66E61FEC2F060044C9AE /* ContentSplitViewController.swift */,
 				A54EB4F91FEEAD690064754C /* MasterTableViewController.swift */,
 				A54EB4FB1FEEAD780064754C /* DetailViewController.swift */,
+				A5F341101FEEC388002D1B67 /* APODTableViewCell.swift */,
 			);
 			path = ContentControllers;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				A573EA2E1FEDD5F5006097A4 /* APODOperation.swift in Sources */,
 				A51D66DF1FEC15420044C9AE /* Application.swift in Sources */,
 				A573EA2C1FEDD59A006097A4 /* APOD.swift in Sources */,
+				A5F341111FEEC388002D1B67 /* APODTableViewCell.swift in Sources */,
 				A51D66EA1FED54200044C9AE /* DateFormatter+Extensions.swift in Sources */,
 				A573EA311FEDD625006097A4 /* ListDataSource.swift in Sources */,
 				A51D66DC1FEC14FB0044C9AE /* NasaRequest.swift in Sources */,

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,13 +35,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdent" id="2Ex-lM-hc0">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="APODTableViewCell" rowHeight="69" id="2Ex-lM-hc0" customClass="APODTableViewCell" customModule="MVCOperations" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="69"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Ex-lM-hc0" id="KIO-Gb-CtQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IDg-dO-f9w">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVH-bS-nwh">
+                                            <rect key="frame" x="16" y="19" width="343" height="31.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="LVH-bS-nwh" firstAttribute="leading" secondItem="KIO-Gb-CtQ" secondAttribute="leadingMargin" id="2p0-it-IuH"/>
+                                        <constraint firstAttribute="bottom" secondItem="IDg-dO-f9w" secondAttribute="bottom" id="CtM-WJ-NUu"/>
+                                        <constraint firstItem="IDg-dO-f9w" firstAttribute="leading" secondItem="KIO-Gb-CtQ" secondAttribute="leading" id="RZy-rq-9OG"/>
+                                        <constraint firstItem="IDg-dO-f9w" firstAttribute="top" secondItem="KIO-Gb-CtQ" secondAttribute="top" id="Zhm-m4-Ea2"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LVH-bS-nwh" secondAttribute="trailing" id="gzT-tx-b76"/>
+                                        <constraint firstAttribute="trailing" secondItem="IDg-dO-f9w" secondAttribute="trailing" id="oqh-Ku-tsh"/>
+                                        <constraint firstItem="LVH-bS-nwh" firstAttribute="centerY" secondItem="KIO-Gb-CtQ" secondAttribute="centerY" id="q7w-3U-8yG"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="apodImageView" destination="IDg-dO-f9w" id="oBM-O2-7qC"/>
+                                    <outlet property="apodTitleLabel" destination="LVH-bS-nwh" id="7J2-Dx-1e4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -52,7 +77,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4T-hb-rof" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632" y="-708"/>
+            <point key="canvasLocation" x="631.20000000000005" y="-708.39580209895053"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kg8-Wc-TCQ">
