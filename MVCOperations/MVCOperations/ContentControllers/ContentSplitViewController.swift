@@ -10,9 +10,11 @@ import UIKit
 
 class ContentSplitViewController: UISplitViewController {
 
+    var dataSource: AnyListDataSource<APOD>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 }
 

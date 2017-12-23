@@ -25,6 +25,7 @@ class APODOperation: ObservedOperation<APOD> {
         let request = NasaRequest.apod(date: date)
         let jsonProcessor = JSONProcessor<APOD>()
         
+        
         session.execute(request: request) { [weak self] (result) in
             guard let _ = self else {
                 assertionFailure("Missing self")
@@ -41,7 +42,6 @@ class APODOperation: ObservedOperation<APOD> {
                     return
                 }
                 
-//                print("FETCHED AND PARSED apod \(apod)")
                 self?.finish(data: apod, errors: [])
             }
         }

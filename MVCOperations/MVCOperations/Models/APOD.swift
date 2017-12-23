@@ -11,7 +11,7 @@ import Foundation
 /// Astronomy Picture of the Day
 struct APOD: Codable {
     let copyright: String?
-    let date: String
+    let date: Date
     let explanation: String
     let hdurl: String?
     let media_type: String

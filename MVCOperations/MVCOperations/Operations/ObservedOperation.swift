@@ -38,8 +38,6 @@ class ObservedOperation<T>: Operation {
         self.operationHandler = handler
     }
     
-
-    
     override func main() {
         guard !isCancelled else {
             operationHandler?(.canceled)
