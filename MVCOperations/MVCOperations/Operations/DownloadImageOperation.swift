@@ -34,20 +34,40 @@ class DownloadImageOperation: Operation {
     }
     
     override func main() {
+        runDataTask()
+    }
+    
+    func runDownloadTask() {
+        
+    }
+    
+    
+    /// This seems to work?
+    func runDataTask() {
         session.dataTask(with: url) {  [weak self] (data, response, error) in
-            guard
-                let data = data,
-                error == nil,
-                let image = UIImage(data: data)
-            else {
-                print("ERROR PROCESSING IMAGE")
+            
+            guard let data = data else {
+                print("MISSING IMAGE DATA")
                 self?._isFinished = true
                 return
             }
-
+            
+            if let err = error {
+                print("IMAGE ERROR \(err)")
+                self?._isFinished = true
+                return
+            }
+            
+            guard let image = UIImage(data: data) else {
+                /// FIXME: god damnit - they are youtube videos
+                print("ERROR PROCESSING IMAGE \(String(describing: self?.url.absoluteString))")
+                self?._isFinished = true
+                return
+            }
+            
             self?.downloadedImage = image
             self?._isFinished = true
             
-        }.resume()
+            }.resume()
     }
 }
