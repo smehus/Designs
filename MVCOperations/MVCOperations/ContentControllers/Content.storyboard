@@ -36,33 +36,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="APODTableViewCell" rowHeight="69" id="2Ex-lM-hc0" customClass="APODTableViewCell" customModule="MVCOperations" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="69"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="APODTableViewCell" rowHeight="86" id="2Ex-lM-hc0" customClass="APODTableViewCell" customModule="MVCOperations" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Ex-lM-hc0" id="KIO-Gb-CtQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IDg-dO-f9w">
-                                            <rect key="frame" x="0.0" y="-154" width="375" height="375.5"/>
+                                            <rect key="frame" x="0.0" y="-145" width="375" height="375.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="IDg-dO-f9w" secondAttribute="height" multiplier="1:1" id="R2C-vZ-H7g"/>
                                             </constraints>
                                         </imageView>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PQ-bC-nLV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cxk-7G-MNI">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <blurEffect style="dark"/>
                                         </visualEffectView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVH-bS-nwh">
-                                            <rect key="frame" x="16" y="11" width="343" height="47"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="31.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="500" constant="69" id="Sxl-ys-aUR"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hC-Kl-UYg">
+                                            <rect key="frame" x="20" y="62.5" width="42" height="12.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -72,12 +78,14 @@
                                         <constraint firstItem="6PQ-bC-nLV" firstAttribute="leading" secondItem="KIO-Gb-CtQ" secondAttribute="leading" id="AnF-ZQ-0no"/>
                                         <constraint firstItem="IDg-dO-f9w" firstAttribute="leading" secondItem="KIO-Gb-CtQ" secondAttribute="leading" id="RZy-rq-9OG"/>
                                         <constraint firstItem="LVH-bS-nwh" firstAttribute="top" secondItem="KIO-Gb-CtQ" secondAttribute="topMargin" id="WaW-8j-BAW"/>
+                                        <constraint firstAttribute="bottom" secondItem="6hC-Kl-UYg" secondAttribute="bottom" constant="10.5" id="ZEC-Ad-BfA"/>
                                         <constraint firstItem="6PQ-bC-nLV" firstAttribute="top" secondItem="KIO-Gb-CtQ" secondAttribute="top" id="eFk-f7-OCF"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="LVH-bS-nwh" secondAttribute="trailing" id="gzT-tx-b76"/>
                                         <constraint firstAttribute="bottom" secondItem="6PQ-bC-nLV" secondAttribute="bottom" id="nhV-zJ-MMH"/>
                                         <constraint firstAttribute="trailing" secondItem="IDg-dO-f9w" secondAttribute="trailing" id="oqh-Ku-tsh"/>
                                         <constraint firstAttribute="trailing" secondItem="6PQ-bC-nLV" secondAttribute="trailing" id="p9f-LM-gM3"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="LVH-bS-nwh" secondAttribute="bottom" id="qNX-2c-puG"/>
+                                        <constraint firstItem="LVH-bS-nwh" firstAttribute="bottom" secondItem="6hC-Kl-UYg" secondAttribute="top" constant="-20" id="tg6-FO-DT2"/>
+                                        <constraint firstItem="6hC-Kl-UYg" firstAttribute="leading" secondItem="KIO-Gb-CtQ" secondAttribute="leading" constant="20" id="yEm-zA-SCm"/>
                                         <constraint firstItem="IDg-dO-f9w" firstAttribute="centerY" secondItem="KIO-Gb-CtQ" secondAttribute="centerY" id="znK-EG-V7l"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -85,6 +93,7 @@
                                     <outlet property="apodImageView" destination="IDg-dO-f9w" id="oBM-O2-7qC"/>
                                     <outlet property="apodTitleLabel" destination="LVH-bS-nwh" id="7J2-Dx-1e4"/>
                                     <outlet property="blurView" destination="6PQ-bC-nLV" id="eGt-Ub-Bnu"/>
+                                    <outlet property="dateLabel" destination="6hC-Kl-UYg" id="tDF-ae-O2I"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

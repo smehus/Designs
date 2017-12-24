@@ -8,8 +8,10 @@
 
 import Foundation
 
-protocol Facade {
+protocol NasaFacade {
     init(session: Session, queue: OperationQueue)
+    func fetchAPOD(for date: Date, completion: @escaping () -> ())
+    func fetchWeeksAPODS(for date: Date, completion: @escaping (APODListDataSource?, Error?) -> ())
 }
 
 enum FacadeError: Error {
@@ -17,7 +19,7 @@ enum FacadeError: Error {
 }
 
 //TODO: Use a protocol
-internal final class NasaFacade: Facade {
+internal final class NasaNetworkFacade: NasaFacade {
     
     private let session: Session
     private let operationQueue: OperationQueue
@@ -38,7 +40,7 @@ internal final class NasaFacade: Facade {
     }
     
     func fetchWeeksAPODS(for date: Date, completion: @escaping (APODListDataSource?, Error?) -> ()) {
-        guard var firstDate = today.day(fromInterval: -30) else {
+        guard var firstDate = today.day(fromInterval: -60) else {
             completion(nil, FacadeError.failed)
             return
         }
@@ -46,7 +48,8 @@ internal final class NasaFacade: Facade {
         
         /// The JSON Processor was getting deallocated because the operation was getting finished immediately and released form the queue
         let gate = GateOperation { [unowned self] _ in
-            let dataSource = APODListDataSource(apods: self.apods)
+            let orderedPods = self.apods.sorted(by: { $0.date > $1.date })
+            let dataSource = APODListDataSource(apods: orderedPods)
             completion(dataSource, nil)
         }
         

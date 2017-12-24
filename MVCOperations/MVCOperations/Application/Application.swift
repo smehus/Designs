@@ -23,7 +23,7 @@ struct Application {
         let facadeQueue = OperationQueue()
         
         let session = NetworkSession()
-        let facade = NasaFacade(session: session, queue: facadeQueue)
+        let facade = NasaNetworkFacade(session: session, queue: facadeQueue)
         initialController.dataFacade = facade
         
         

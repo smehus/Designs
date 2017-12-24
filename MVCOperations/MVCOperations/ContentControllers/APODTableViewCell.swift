@@ -53,6 +53,13 @@ class APODTableViewCell: UITableViewCell {
         }
     }
     
+    @IBOutlet private var dateLabel: UILabel! {
+        didSet {
+            dateLabel.textColor = .white
+            dateLabel.text = ""
+        }
+    }
+    
     private var observer: NSKeyValueObservation?
     
     private var model: APODCellModel? {
@@ -60,6 +67,7 @@ class APODTableViewCell: UITableViewCell {
             guard let model = model else { return }
             
             apodTitleLabel.text = model.apod.title
+            dateLabel.text = DateFormatter.apodDateFormatter.string(from: model.apod.date)
             
             if model.image == nil {
                 observer = model.observe(\.image, changeHandler: { [weak self] (updatedModel, change) in
