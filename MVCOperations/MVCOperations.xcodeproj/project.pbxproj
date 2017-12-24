@@ -32,6 +32,7 @@
 		A5F341111FEEC388002D1B67 /* APODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341101FEEC388002D1B67 /* APODTableViewCell.swift */; };
 		A5F341131FEEC54E002D1B67 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341121FEEC54E002D1B67 /* UIImageView+Extensions.swift */; };
 		A5F341171FEECBD8002D1B67 /* DownloadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341161FEECBD8002D1B67 /* DownloadImageOperation.swift */; };
+		A5F3411A1FEF4925002D1B67 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341191FEF4925002D1B67 /* CacheManager.swift */; };
 		A5FE27341FEDEB22004773B5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		A5F341101FEEC388002D1B67 /* APODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTableViewCell.swift; sourceTree = "<group>"; };
 		A5F341121FEEC54E002D1B67 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		A5F341161FEECBD8002D1B67 /* DownloadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageOperation.swift; sourceTree = "<group>"; };
+		A5F341191FEF4925002D1B67 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 		A51D66B01FEBF3230044C9AE /* MVCOperations */ = {
 			isa = PBXGroup;
 			children = (
+				A5F341181FEF4919002D1B67 /* FileManager */,
 				A573EA2F1FEDD618006097A4 /* Protocols */,
 				A573EA2A1FEDD592006097A4 /* Models */,
 				A51D66E81FED54120044C9AE /* Extensions */,
@@ -191,6 +194,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		A5F341181FEF4919002D1B67 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				A5F341191FEF4925002D1B67 /* CacheManager.swift */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -273,6 +284,7 @@
 				A5F341111FEEC388002D1B67 /* APODTableViewCell.swift in Sources */,
 				A51D66EA1FED54200044C9AE /* DateFormatter+Extensions.swift in Sources */,
 				A573EA311FEDD625006097A4 /* ListDataSource.swift in Sources */,
+				A5F3411A1FEF4925002D1B67 /* CacheManager.swift in Sources */,
 				A51D66DC1FEC14FB0044C9AE /* NasaRequest.swift in Sources */,
 				A5FE27341FEDEB22004773B5 /* Date+Extensions.swift in Sources */,
 				A51D66E71FEC2F060044C9AE /* ContentSplitViewController.swift in Sources */,

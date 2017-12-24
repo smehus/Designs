@@ -34,15 +34,18 @@ class DownloadImageOperation: Operation {
     }
     
     override func main() {
-        runDataTask()
+        runDownloadTask()
     }
     
     func runDownloadTask() {
-        
+        session.downloadTask(with: url) { (cacheURL, res, error) in
+            print("base url \(self.url)")
+            print("cache url \(cacheURL!)")
+            
+            print("wtffff")
+        }.resume()
     }
     
-    
-    /// This seems to work?
     func runDataTask() {
         session.dataTask(with: url) {  [weak self] (data, response, error) in
             
