@@ -9,14 +9,14 @@
 import UIKit
 
 protocol MasterDelegate: class {
-    func didSelect(apod: APOD)
+    func didSelect(apod: APODCellModel)
 }
 
 class MasterTableViewController: UITableViewController {
     
     weak var delegate: MasterDelegate?
 
-    var dataSource: AnyListDataSource<APOD>? {
+    var dataSource: AnyListDataSource<APODCellModel>? {
         didSet {
             tableView.reloadData()
         }

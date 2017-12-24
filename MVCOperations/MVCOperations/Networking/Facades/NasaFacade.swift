@@ -88,10 +88,10 @@ class GateOperation: ObservedOperation<()> {
 
 struct APODListDataSource: ListDataSource {
     
-    private let apods: [APOD]
+    private let models: [APODCellModel]
     
     init(apods: [APOD]) {
-        self.apods = apods
+        self.models = apods.map { APODCellModel(apod: $0) }
     }
     
     var numberOfSections: Int {
@@ -99,18 +99,18 @@ struct APODListDataSource: ListDataSource {
     }
     
     func numberOfRows(for section: Int) -> Int {
-        return apods.count
+        return models.count
     }
     
-    func item(at indexPath: IndexPath) -> APOD? {
+    func item(at indexPath: IndexPath) -> APODCellModel? {
         guard
             indexPath.section == 0,
-            indexPath.row < apods.count
+            indexPath.row < models.count
         else {
             return nil
         }
         
-        return apods[indexPath.row]
+        return models[indexPath.row]
     }
 }
 

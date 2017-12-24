@@ -14,7 +14,7 @@ class ContentSplitViewController: UISplitViewController {
         case apodDetailSegue = "apodDetailSegue"
     }
 
-    var dataSource: AnyListDataSource<APOD>? {
+    var dataSource: AnyListDataSource<APODCellModel>? {
         didSet {
             guard
                 let source = dataSource,
@@ -62,7 +62,7 @@ extension ContentSplitViewController: UISplitViewControllerDelegate {
 }
 
 extension ContentSplitViewController: MasterDelegate {
-    func didSelect(apod: APOD) {
+    func didSelect(apod: APODCellModel) {
         performSegue(withIdentifier: Segues.apodDetailSegue.rawValue, sender: apod)
         
     }

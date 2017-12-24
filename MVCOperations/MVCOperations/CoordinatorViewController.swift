@@ -12,7 +12,7 @@ private enum CoordinatorState {
     case none
     case loading
     case error
-    case success(dataSource: AnyListDataSource<APOD>)
+    case success(dataSource: AnyListDataSource<APODCellModel>)
 }
 
 private func !=(lhs: CoordinatorState, rhs: CoordinatorState) -> Bool {
@@ -74,7 +74,7 @@ internal final class CoordinatorViewController: UIViewController {
             }
             
             DispatchQueue.main.async {
-                self.state = .success(dataSource: AnyListDataSource<APOD>(concrete: source))
+                self.state = .success(dataSource: AnyListDataSource<APODCellModel>(concrete: source))
             }
         })
     }
