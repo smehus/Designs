@@ -35,12 +35,16 @@ internal final class CoordinatorViewController: UIViewController {
     private var coordinatorQueue: OperationQueue?
     private var currentContext: UIViewController?
     
-    lazy var loadingViewController: LoadingViewController = {
+    lazy private var loadingViewController: LoadingViewController = {
         return LoadingViewController.instantiateFromStoryboard()
     }()
     
-    lazy var contentViewController: ContentSplitViewController = {
+    lazy private var contentViewController: ContentSplitViewController = {
         return ContentSplitViewController.instantiateFromStoryboard()
+    }()
+    
+    lazy private var errorViewController: ErrorViewController = {
+        return ErrorViewController.instantiateFromStoryboard()
     }()
     
     private var state: CoordinatorState = .none {
@@ -70,6 +74,7 @@ internal final class CoordinatorViewController: UIViewController {
                 error == nil
             else {
                 print("Data Facade failed to do stuff")
+                self.state = .error
                 return
             }
             
@@ -98,7 +103,7 @@ extension CoordinatorViewController {
         case .none:
             nextController = contentViewController
         case .error:
-            nextController = contentViewController
+            nextController = errorViewController
         }
         
         let addChildOperation = AddChildOperation(parent: self, child: nextController, currentChild: currentContext)

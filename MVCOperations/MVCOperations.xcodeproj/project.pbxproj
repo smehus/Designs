@@ -33,6 +33,7 @@
 		A5F341131FEEC54E002D1B67 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341121FEEC54E002D1B67 /* UIImageView+Extensions.swift */; };
 		A5F341171FEECBD8002D1B67 /* DownloadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341161FEECBD8002D1B67 /* DownloadImageOperation.swift */; };
 		A5F3411A1FEF4925002D1B67 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341191FEF4925002D1B67 /* CacheManager.swift */; };
+		A5F3411C1FF01A47002D1B67 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3411B1FF01A47002D1B67 /* ErrorViewController.swift */; };
 		A5FE27341FEDEB22004773B5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		A5F341121FEEC54E002D1B67 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		A5F341161FEECBD8002D1B67 /* DownloadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageOperation.swift; sourceTree = "<group>"; };
 		A5F341191FEF4925002D1B67 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		A5F3411B1FF01A47002D1B67 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		A5FE27331FEDEB22004773B5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				A51D66BD1FEBF3230044C9AE /* Info.plist */,
 				A51D66C31FEBF3DD0044C9AE /* LoadingViewController.swift */,
 				A51D66C51FEBF3FF0044C9AE /* StoryboardInstantiable.swift */,
+				A5F3411B1FF01A47002D1B67 /* ErrorViewController.swift */,
 			);
 			path = MVCOperations;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				A51D66DC1FEC14FB0044C9AE /* NasaRequest.swift in Sources */,
 				A5FE27341FEDEB22004773B5 /* Date+Extensions.swift in Sources */,
 				A51D66E71FEC2F060044C9AE /* ContentSplitViewController.swift in Sources */,
+				A5F3411C1FF01A47002D1B67 /* ErrorViewController.swift in Sources */,
 				A54EB4FC1FEEAD780064754C /* DetailViewController.swift in Sources */,
 				A51D66DA1FEC12840044C9AE /* Session.swift in Sources */,
 				A51D66B41FEBF3230044C9AE /* CoordinatorViewController.swift in Sources */,
