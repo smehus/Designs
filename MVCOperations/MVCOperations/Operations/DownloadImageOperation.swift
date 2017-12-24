@@ -70,31 +70,4 @@ class DownloadImageOperation: Operation {
             
         }.resume()
     }
-    
-    func runDataTask() {
-        session.dataTask(with: url) {  [weak self] (data, response, error) in
-            
-            defer {
-                self?._isFinished = true
-            }
-            
-            guard let data = data else {
-                print("MISSING IMAGE DATA")
-                return
-            }
-            
-            if let err = error {
-                print("IMAGE ERROR \(err)")
-                return
-            }
-            
-            guard let image = UIImage(data: data) else {
-                /// FIXME: god damnit - they are youtube videos
-                print("ERROR PROCESSING IMAGE \(String(describing: self?.url.absoluteString))")
-                return
-            }
-            
-            self?.downloadedImage = image
-            }.resume()
-    }
 }
