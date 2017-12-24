@@ -24,6 +24,8 @@ class MasterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 68
+        tableView.rowHeight = UITableViewAutomaticDimension
         title = "Week"
     }
 
@@ -44,10 +46,6 @@ class MasterTableViewController: UITableViewController {
         }
 
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 68
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
