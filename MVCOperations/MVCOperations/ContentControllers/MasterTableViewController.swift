@@ -22,8 +22,6 @@ class MasterTableViewController: UITableViewController {
         }
     }
     
-    private let imageQueue = OperationQueue()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Week"
@@ -42,7 +40,7 @@ class MasterTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: APODTableViewCell.self), for: indexPath) as! APODTableViewCell
         if let apod = dataSource?.item(at: indexPath) {
-            cell.configure(with: apod, queue: imageQueue)
+            cell.configure(with: apod)
         }
 
         return cell

@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MVCOperations/MVCOperations/ContentControllers/APODTableViewCell.swift"
+            timestampString = "535774920.849786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "downloadImage(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in MVCOperations.APODTableViewCell.downloadImage(with: Foundation.URL) -&gt; ()"
+                  moduleName = "MVCOperations"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/scottmehus/Documents/ScottPersonal/NetworkingDesigns/MVCOperations/MVCOperations/ContentControllers/APODTableViewCell.swift"
+                  timestampString = "535774203.392474"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in MVCOperations.APODTableViewCell.downloadImage(with: Foundation.URL) -&gt; ()"
+                  moduleName = "MVCOperations"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/scottmehus/Documents/ScottPersonal/NetworkingDesigns/MVCOperations/MVCOperations/ContentControllers/APODTableViewCell.swift"
+                  timestampString = "535774203.394661"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

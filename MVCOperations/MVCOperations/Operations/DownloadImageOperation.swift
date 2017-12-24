@@ -10,13 +10,27 @@ import UIKit
 
 class DownloadImageOperation: Operation {
     
-    private let completionHandler: (UIImage?, URL?) -> Void
-    private let url: URL
-    private let session = URLSession(configuration: .default)
+    let url: URL
+    var downloadedImage: UIImage?
     
-    init(url: URL, handler: @escaping (UIImage?, URL?) -> Void) {
+    private var _isFinished = false {
+        willSet {
+            willChangeValue(forKey: "isFinished")
+        }
+        
+        didSet {
+            didChangeValue(forKey: "isFinished")
+        }
+    }
+    
+    private let session = URLSession.shared
+    
+    init(url: URL) {
         self.url = url
-        self.completionHandler = handler
+    }
+    
+    override var isFinished: Bool {
+        return _isFinished
     }
     
     override func main() {
@@ -25,12 +39,15 @@ class DownloadImageOperation: Operation {
                 let data = data,
                 error == nil,
                 let image = UIImage(data: data)
-                else {
-                    self?.completionHandler(nil, nil)
-                    return
+            else {
+                print("ERROR PROCESSING IMAGE")
+                self?._isFinished = true
+                return
             }
+
+            self?.downloadedImage = image
+            self?._isFinished = true
             
-            self?.completionHandler(image, self?.url)
-            }.resume()
+        }.resume()
     }
 }

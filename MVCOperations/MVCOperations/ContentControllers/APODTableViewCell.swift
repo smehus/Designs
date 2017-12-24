@@ -22,7 +22,6 @@ class APODTableViewCell: UITableViewCell {
         }
     }
     
-    private var downloadImageOperation: DownloadImageOperation?
     private var apod: APOD? {
         didSet {
             guard let apod = apod else { return }
@@ -30,34 +29,23 @@ class APODTableViewCell: UITableViewCell {
         }
     }
 
-    func configure(with apod: APOD, queue: OperationQueue) {
+    func configure(with apod: APOD) {
         self.apod = apod
-        downloadImage(with: apod.url, queue: queue)
+        downloadImage(with: apod.url)
     }
     
-    func downloadImage(with url: URL, queue: OperationQueue) {
-        downloadImageOperation?.cancel()
+    func downloadImage(with url: URL) {
         apodTitleLabel.textColor = .black
         apodImageView.image = nil
-        let downloadOperation = DownloadImageOperation(url: url) { [weak self] (image, imageURL) in
-            guard
-                let image = image,
-                let imageURL = imageURL,
-                imageURL == url
-            else {
-                DispatchQueue.main.async {
-                    self?.apodImageView.image = nil
-                }
-                return
-            }
-            
+        
+        let imageOperation = DownloadImageOperation(url: url)
+        
+        imageOperation.completionBlock = { [weak self] in
             DispatchQueue.main.async {
-                self?.apodImageView.image = image
-                self?.apodTitleLabel.textColor = .white
+                self?.apodImageView.image = imageOperation.downloadedImage
             }
         }
         
-        queue.addOperation(downloadOperation)
-        downloadImageOperation = downloadOperation
+        OperationQueue.main.addOperation(imageOperation)
     }
 }
