@@ -53,4 +53,16 @@ class MasterTableViewController: UITableViewController {
         guard let apod = dataSource?.item(at: indexPath) else { return }
         delegate?.didSelect(apod: apod)
     }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let paths = tableView.indexPathsForVisibleRows else { return }
+        for idx in paths {
+            let rect = tableView.rectForRow(at: idx)
+            let position = tableView.convert(CGPoint(x: rect.origin.x, y: rect.origin.y), to: UIApplication.shared.keyWindow!)
+            let fraction = position.y / (view.bounds.height / 2)
+            if let cell = tableView.cellForRow(at: idx) as? APODTableViewCell {
+                cell.offsetImage(with: (fraction))
+            }
+        }
+    }
 }

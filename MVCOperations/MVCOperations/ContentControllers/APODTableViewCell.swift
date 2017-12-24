@@ -18,6 +18,7 @@ class APODCellModel: NSObject {
         downloadImage(with: apod.url)
     }
     
+    
     func downloadImage(with url: URL) {
         
         let imageOperation = DownloadImageOperation(url: url)
@@ -33,7 +34,13 @@ class APODCellModel: NSObject {
 }
 
 class APODTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet private var blurView: UIVisualEffectView! {
+        didSet {
+            blurView.alpha = 0.75
+        }
+    }
+    
     @IBOutlet private var apodImageView: UIImageView! {
         didSet {
             apodImageView.contentMode = .scaleAspectFill
@@ -41,7 +48,7 @@ class APODTableViewCell: UITableViewCell {
     }
     @IBOutlet private var apodTitleLabel: UILabel! {
         didSet {
-            apodTitleLabel.textColor = .black
+            apodTitleLabel.textColor = .white
             apodTitleLabel.text = ""
         }
     }
@@ -74,5 +81,12 @@ class APODTableViewCell: UITableViewCell {
     func configure(with model: APODCellModel) {
         self.model = model
         
+    }
+    
+    func offsetImage(with offset: CGFloat) {
+        CATransaction.begin()
+        let contentCenter = (contentView.bounds.size.height / 2)
+        apodImageView.layer.position.y = contentCenter * offset
+        CATransaction.commit()
     }
 }

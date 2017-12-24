@@ -44,11 +44,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IDg-dO-f9w">
-                                            <rect key="frame" x="0.0" y="-153.5" width="375" height="375.5"/>
+                                            <rect key="frame" x="0.0" y="-154" width="375" height="375.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="IDg-dO-f9w" secondAttribute="height" multiplier="1:1" id="R2C-vZ-H7g"/>
                                             </constraints>
                                         </imageView>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PQ-bC-nLV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cxk-7G-MNI">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <blurEffect style="dark"/>
+                                        </visualEffectView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVH-bS-nwh">
                                             <rect key="frame" x="16" y="11" width="343" height="47"/>
                                             <constraints>
@@ -61,10 +69,14 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="LVH-bS-nwh" firstAttribute="leading" secondItem="KIO-Gb-CtQ" secondAttribute="leadingMargin" id="2p0-it-IuH"/>
+                                        <constraint firstItem="6PQ-bC-nLV" firstAttribute="leading" secondItem="KIO-Gb-CtQ" secondAttribute="leading" id="AnF-ZQ-0no"/>
                                         <constraint firstItem="IDg-dO-f9w" firstAttribute="leading" secondItem="KIO-Gb-CtQ" secondAttribute="leading" id="RZy-rq-9OG"/>
                                         <constraint firstItem="LVH-bS-nwh" firstAttribute="top" secondItem="KIO-Gb-CtQ" secondAttribute="topMargin" id="WaW-8j-BAW"/>
+                                        <constraint firstItem="6PQ-bC-nLV" firstAttribute="top" secondItem="KIO-Gb-CtQ" secondAttribute="top" id="eFk-f7-OCF"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="LVH-bS-nwh" secondAttribute="trailing" id="gzT-tx-b76"/>
+                                        <constraint firstAttribute="bottom" secondItem="6PQ-bC-nLV" secondAttribute="bottom" id="nhV-zJ-MMH"/>
                                         <constraint firstAttribute="trailing" secondItem="IDg-dO-f9w" secondAttribute="trailing" id="oqh-Ku-tsh"/>
+                                        <constraint firstAttribute="trailing" secondItem="6PQ-bC-nLV" secondAttribute="trailing" id="p9f-LM-gM3"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="LVH-bS-nwh" secondAttribute="bottom" id="qNX-2c-puG"/>
                                         <constraint firstItem="IDg-dO-f9w" firstAttribute="centerY" secondItem="KIO-Gb-CtQ" secondAttribute="centerY" id="znK-EG-V7l"/>
                                     </constraints>
@@ -72,6 +84,7 @@
                                 <connections>
                                     <outlet property="apodImageView" destination="IDg-dO-f9w" id="oBM-O2-7qC"/>
                                     <outlet property="apodTitleLabel" destination="LVH-bS-nwh" id="7J2-Dx-1e4"/>
+                                    <outlet property="blurView" destination="6PQ-bC-nLV" id="eGt-Ub-Bnu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

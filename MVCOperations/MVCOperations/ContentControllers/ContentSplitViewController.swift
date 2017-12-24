@@ -64,7 +64,6 @@ extension ContentSplitViewController: UISplitViewControllerDelegate {
 extension ContentSplitViewController: MasterDelegate {
     func didSelect(apod: APODCellModel) {
         performSegue(withIdentifier: Segues.apodDetailSegue.rawValue, sender: apod)
-        
     }
 }
 
