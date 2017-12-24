@@ -38,11 +38,35 @@ class DownloadImageOperation: Operation {
     }
     
     func runDownloadTask() {
-        session.downloadTask(with: url) { (cacheURL, res, error) in
-            print("base url \(self.url)")
-            print("cache url \(cacheURL!)")
+        
+        // Return cached image
+        if let image = CacheManager.shared.image(at: url) {
+            print("💚 Using cached image")
+            downloadedImage = image
+            _isFinished = true
+            return
+        }
+        
+        session.downloadTask(with: url) { [weak self] (cacheURL, res, error) in
             
-            print("wtffff")
+            defer {
+                self?._isFinished = true
+            }
+            
+            guard let strongSelf = self else {
+                return
+            }
+            if let err = error {
+                print("Image download error \(err)")
+            }
+            
+            if let current = cacheURL {
+                do {
+                    try CacheManager.shared.cahceFile(at: current, to: strongSelf.url)
+                    strongSelf.downloadedImage = CacheManager.shared.image(at: strongSelf.url)
+                } catch { }
+            }
+            
         }.resume()
     }
     
