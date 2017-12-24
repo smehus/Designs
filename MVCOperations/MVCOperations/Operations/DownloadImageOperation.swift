@@ -50,6 +50,7 @@ class DownloadImageOperation: Operation {
         session.downloadTask(with: url) { [weak self] (cacheURL, res, error) in
             
             defer {
+                /// Need to manaully trigger isFinished because the urlSession .resume() function returns immediately
                 self?._isFinished = true
             }
             
