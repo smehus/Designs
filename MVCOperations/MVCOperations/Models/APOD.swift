@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum MediaType: String {
+    case image = "image"
+    case video = "video"
+}
+
 /// Astronomy Picture of the Day
 struct APOD: Codable {
     let copyright: String?
@@ -18,4 +23,8 @@ struct APOD: Codable {
     let service_version: String
     let title: String
     let url: URL
+    
+    var mediaType: MediaType? {
+        return MediaType(rawValue: media_type)
+    }
 }

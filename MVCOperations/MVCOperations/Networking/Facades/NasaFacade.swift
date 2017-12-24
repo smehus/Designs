@@ -55,7 +55,8 @@ internal final class NasaFacade: Facade {
             let operation = APODOperation(date: firstDate, session: session, handler: { [weak self] (result) in
                 guard
                     case let OperationResult.success(model) = result,
-                    let apod = model
+                    let apod = model,
+                    apod.mediaType == .image
                 else {
                     return
                 }

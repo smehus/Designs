@@ -41,7 +41,7 @@ class APODTableViewCell: UITableViewCell {
     }
     @IBOutlet private var apodTitleLabel: UILabel! {
         didSet {
-            apodTitleLabel.textColor = .blue
+            apodTitleLabel.textColor = .black
             apodTitleLabel.text = ""
         }
     }
@@ -51,13 +51,17 @@ class APODTableViewCell: UITableViewCell {
     private var model: APODCellModel? {
         didSet {
             guard let model = model else { return }
-            apodImageView.image = model.image
+            
             apodTitleLabel.text = model.apod.title
             
             if model.image == nil {
                 observer = model.observe(\.image, changeHandler: { [weak self] (updatedModel, change) in
                     self?.apodImageView.image = updatedModel.image
+                    self?.apodTitleLabel.textColor = .white
                 })
+            } else {
+                apodImageView.image = model.image
+                apodTitleLabel.textColor = .white
             }
         }
     }
