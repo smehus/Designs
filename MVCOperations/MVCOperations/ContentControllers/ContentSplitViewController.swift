@@ -43,16 +43,15 @@ class ContentSplitViewController: UISplitViewController {
         
         switch seg {
         case .apodDetailSegue:
-            guard let apod = sender as? APOD else { return }
+            guard let apod = sender as? APODCellModel else { return }
             prepareDetail(segue: segue, apod: apod)
         }
     }
     
-    private func prepareDetail(segue: UIStoryboardSegue, apod: APOD) {
+    private func prepareDetail(segue: UIStoryboardSegue, apod: APODCellModel) {
         guard let detail = segue.destination as? DetailViewController else { return }
         detail.apod = apod
     }
-   
 }
 
 extension ContentSplitViewController: UISplitViewControllerDelegate {

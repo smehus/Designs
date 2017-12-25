@@ -37,7 +37,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXN-0R-SJN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060" y="22"/>
+            <point key="canvasLocation" x="670" y="-695"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="py1-Az-esU">

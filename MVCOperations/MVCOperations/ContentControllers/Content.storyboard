@@ -19,9 +19,37 @@
                     <view key="view" contentMode="scaleToFill" id="tTr-Il-acn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWg-TT-qmC">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HI9-VC-IhH">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="HI9-VC-IhH" firstAttribute="leading" secondItem="uWg-TT-qmC" secondAttribute="leading" id="4I5-qi-enu"/>
+                                    <constraint firstAttribute="bottom" secondItem="HI9-VC-IhH" secondAttribute="bottom" id="GLp-Zj-FYJ"/>
+                                    <constraint firstItem="HI9-VC-IhH" firstAttribute="top" secondItem="uWg-TT-qmC" secondAttribute="top" id="T8j-fG-vaE"/>
+                                    <constraint firstAttribute="trailing" secondItem="HI9-VC-IhH" secondAttribute="trailing" id="aov-fF-kSg"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BzE-ma-umn" firstAttribute="trailing" secondItem="uWg-TT-qmC" secondAttribute="trailing" id="K84-E4-2mK"/>
+                            <constraint firstItem="HI9-VC-IhH" firstAttribute="height" secondItem="tTr-Il-acn" secondAttribute="height" id="Xzl-xs-hfx"/>
+                            <constraint firstItem="BzE-ma-umn" firstAttribute="bottom" secondItem="uWg-TT-qmC" secondAttribute="bottom" id="ft8-E3-fRf"/>
+                            <constraint firstItem="uWg-TT-qmC" firstAttribute="top" secondItem="BzE-ma-umn" secondAttribute="top" id="kSI-FB-ih5"/>
+                            <constraint firstItem="uWg-TT-qmC" firstAttribute="leading" secondItem="BzE-ma-umn" secondAttribute="leading" id="v8q-Kq-vAq"/>
+                            <constraint firstItem="HI9-VC-IhH" firstAttribute="width" secondItem="tTr-Il-acn" secondAttribute="width" id="vHo-cW-rfV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BzE-ma-umn"/>
                     </view>
+                    <connections>
+                        <outlet property="apodImageView" destination="HI9-VC-IhH" id="ffU-p6-W8p"/>
+                        <outlet property="scrollView" destination="uWg-TT-qmC" id="5Nz-31-sCC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfc-s2-Zbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
