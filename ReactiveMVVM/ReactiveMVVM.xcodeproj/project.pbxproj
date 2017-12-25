@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A5F341641FF1AF22002D1B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341631FF1AF22002D1B67 /* AppDelegate.swift */; };
-		A5F341661FF1AF22002D1B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341651FF1AF22002D1B67 /* ViewController.swift */; };
+		A5F341661FF1AF22002D1B67 /* GatewayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341651FF1AF22002D1B67 /* GatewayViewController.swift */; };
 		A5F341691FF1AF22002D1B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F341671FF1AF22002D1B67 /* Main.storyboard */; };
 		A5F3416B1FF1AF22002D1B67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5F3416A1FF1AF22002D1B67 /* Assets.xcassets */; };
 		A5F3416E1FF1AF22002D1B67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F3416C1FF1AF22002D1B67 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		A5F341601FF1AF22002D1B67 /* ReactiveMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F341631FF1AF22002D1B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5F341651FF1AF22002D1B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5F341651FF1AF22002D1B67 /* GatewayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayViewController.swift; sourceTree = "<group>"; };
 		A5F341681FF1AF22002D1B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5F3416A1FF1AF22002D1B67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5F3416D1FF1AF22002D1B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				A5F341631FF1AF22002D1B67 /* AppDelegate.swift */,
-				A5F341651FF1AF22002D1B67 /* ViewController.swift */,
+				A5F341651FF1AF22002D1B67 /* GatewayViewController.swift */,
 				A5F341671FF1AF22002D1B67 /* Main.storyboard */,
 				A5F3416A1FF1AF22002D1B67 /* Assets.xcassets */,
 				A5F3416C1FF1AF22002D1B67 /* LaunchScreen.storyboard */,
@@ -136,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5F341661FF1AF22002D1B67 /* ViewController.swift in Sources */,
+				A5F341661FF1AF22002D1B67 /* GatewayViewController.swift in Sources */,
 				A5F341641FF1AF22002D1B67 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +280,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mehus.ReactiveMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
