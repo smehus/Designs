@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A32758A4B5C0DCDAC21CF767 /* Pods_ReactiveMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F044587252D9AA317651414 /* Pods_ReactiveMVVM.framework */; };
+		A5D562811FF293490060046F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562801FF293490060046F /* Request.swift */; };
+		A5D562831FF293730060046F /* NasaBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562821FF293730060046F /* NasaBridge.swift */; };
+		A5D562851FF296C90060046F /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562841FF296C90060046F /* SessionManager.swift */; };
 		A5F341641FF1AF22002D1B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341631FF1AF22002D1B67 /* AppDelegate.swift */; };
 		A5F341661FF1AF22002D1B67 /* GatewayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341651FF1AF22002D1B67 /* GatewayViewController.swift */; };
 		A5F341691FF1AF22002D1B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F341671FF1AF22002D1B67 /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 
 /* Begin PBXFileReference section */
 		0F044587252D9AA317651414 /* Pods_ReactiveMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactiveMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5D562801FF293490060046F /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		A5D562821FF293730060046F /* NasaBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaBridge.swift; sourceTree = "<group>"; };
+		A5D562841FF296C90060046F /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		A5F341601FF1AF22002D1B67 /* ReactiveMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F341631FF1AF22002D1B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5F341651FF1AF22002D1B67 /* GatewayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +63,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A5D5627F1FF2933F0060046F /* DataServices */ = {
+			isa = PBXGroup;
+			children = (
+				A5D562801FF293490060046F /* Request.swift */,
+				A5D562821FF293730060046F /* NasaBridge.swift */,
+				A5D562841FF296C90060046F /* SessionManager.swift */,
+			);
+			path = DataServices;
+			sourceTree = "<group>";
+		};
 		A5F341571FF1AF22002D1B67 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +94,7 @@
 		A5F341621FF1AF22002D1B67 /* ReactiveMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				A5D5627F1FF2933F0060046F /* DataServices */,
 				A5F341631FF1AF22002D1B67 /* AppDelegate.swift */,
 				A5F341651FF1AF22002D1B67 /* GatewayViewController.swift */,
 				A5F341671FF1AF22002D1B67 /* Main.storyboard */,
@@ -220,6 +237,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5F341661FF1AF22002D1B67 /* GatewayViewController.swift in Sources */,
+				A5D562811FF293490060046F /* Request.swift in Sources */,
+				A5D562831FF293730060046F /* NasaBridge.swift in Sources */,
+				A5D562851FF296C90060046F /* SessionManager.swift in Sources */,
 				A5F341641FF1AF22002D1B67 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
