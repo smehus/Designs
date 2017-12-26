@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 enum NasaRequest: Request {
     case apod(date: Date)
@@ -29,7 +30,7 @@ enum NasaRequest: Request {
 }
 
 protocol NasaBridge {
-    func makeFetchAPOD(at date: Date)
+    func makeFetchAPOD(at date: Date) -> SignalProducer<APOD?, NetworkError>
 }
 
 class WebSerivceNasaBridge: NasaBridge {
@@ -40,27 +41,34 @@ class WebSerivceNasaBridge: NasaBridge {
         self.session = session
     }
     
-    func makeFetchAPOD(at date: Date) {
-        let disposable = session.execute(request: NasaRequest.apod(date: Date())).map { (result) -> JSON? in
-            guard case let .success(data) = result else { return nil }
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! JSON
-                return json
-            } catch {
-                return nil
-            }
-            }.map { (json) -> APOD? in
-                guard let json = json else { return nil }
-                return APOD(title: "")
-        }
+    func makeFetchWeeksAPODS(startingDate: Date) {
+        let signals = [SignalProducer<APOD, NetworkError>]()
         
-        disposable.startWithResult { (result) in
-            switch result {
-            case .failure(let error):
-                break
-            case .success(let apod):
-                break
-            }
+        // Zip all signals together
+    }
+    
+    func makeFetchAPOD(at date: Date) -> SignalProducer<APOD?, NetworkError> {
+        return SignalProducer { [weak self] observer, disposable in
+            self?.session.execute(request: NasaRequest.apod(date: Date()))
+                
+                .map { (result) -> JSON? in
+                    guard case let .success(data) = result else { return nil }
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! JSON
+                        return json
+                    } catch {
+                        return nil
+                    }
+                }
+                
+                .map { (json) -> APOD? in
+                    guard let json = json else { return nil }
+                    return APOD(title: "")
+                }
+                
+                .startWithResult({ (apodResult) in
+                    observer.send(value: nil)
+                })
         }
     }
 }
