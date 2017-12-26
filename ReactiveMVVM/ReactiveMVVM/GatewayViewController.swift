@@ -10,9 +10,6 @@ import UIKit
 import ReactiveSwift
 import Result
 
-struct APOD {
-    
-}
 
 class GatewayViewController: UIViewController {
 

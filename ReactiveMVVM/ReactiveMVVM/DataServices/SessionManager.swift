@@ -25,7 +25,7 @@ internal final class SessionManager {
                 statusCodeRule(codeRange: 400...499, shouldContain: false)]
     }
     
-    func execute(request: Request) -> SignalProducer<Result<Data, NetworkError>, NetworkError> {
+    func execute(request: Request) -> SignalProducer<Result<Data, NoError>, NetworkError> {
         return SignalProducer {[weak self] observer, disposable in
             guard let urlRequest = request.urlRequest else { return }
             self?.session.dataTask(with: urlRequest) { [weak self] (data, response, error) in
