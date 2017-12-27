@@ -21,8 +21,8 @@ internal final class SessionManager {
     let session = URLSession.shared
     
     var rules: [Rule] {
-        return [statusCodeRule(codeRange: 300...399, shouldContain: true),
-                statusCodeRule(codeRange: 400...499, shouldContain: false)]
+        return [statusCodeRule(codeRange: 200...399, shouldContain: true),
+                statusCodeRule(codeRange: 400...599, shouldContain: false)]
     }
     
     func execute(request: Request) -> SignalProducer<Result<Data, NoError>, NetworkError> {

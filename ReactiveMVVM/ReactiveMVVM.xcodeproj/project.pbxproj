@@ -83,6 +83,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		A5D562891FF3E4190060046F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		A5F341571FF1AF22002D1B67 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +111,7 @@
 		A5F341621FF1AF22002D1B67 /* ReactiveMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				A5D562891FF3E4190060046F /* ViewModels */,
 				A5D562861FF2AAE10060046F /* Models */,
 				A5D5627F1FF2933F0060046F /* DataServices */,
 				A5F341631FF1AF22002D1B67 /* AppDelegate.swift */,

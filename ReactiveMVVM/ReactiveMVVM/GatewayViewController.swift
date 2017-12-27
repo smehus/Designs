@@ -13,6 +13,8 @@ import Result
 
 class GatewayViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
