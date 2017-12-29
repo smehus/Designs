@@ -15,6 +15,8 @@ class GatewayViewController: UIViewController {
     
     var viewModel: GatewayViewModel?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
@@ -24,6 +26,12 @@ class GatewayViewController: UIViewController {
     private func setupBindings() {
         viewModel?.state.signal.observeValues { state in
             switch state {
+            case .loading:
+                print("Gatewaystate loading")
+            case .success:
+                print("Gatway state success")
+            case .failed(let errorMessage):
+                print("Gatway state failure ")
             default: break
             }
         }

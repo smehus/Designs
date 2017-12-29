@@ -34,15 +34,20 @@ internal final class SessionManager {
                 observer.send(error: .unknown)
                 return
             }
-            print("\(urlRequest)")
-            strongSelf.session.dataTask(with: urlRequest) { [weak self] (data, response, error) in
+            
+            print("REQUESTING \(urlRequest)")
+            strongSelf.session.dataTask(with: urlRequest) { [weak self, weak observer] (data, response, error) in
+                defer {
+                    observer?.sendCompleted()
+                }
                 
                 guard
                     let strongSelf = self,
+                    let strongObserver = observer,
                     let res = response as? HTTPURLResponse,
                     let data = data
                 else {
-                    observer.send(error: NetworkError.unknown)
+                    observer?.send(error: NetworkError.unknown)
                     return
                 }
                 
@@ -52,9 +57,9 @@ internal final class SessionManager {
                 
                 switch responseHandler {
                 case .failure(let handlerError):
-                    observer.send(error: handlerError)
+                    strongObserver.send(error: handlerError)
                 case .success:
-                    observer.send(value: .success(data))
+                    strongObserver.send(value: .success(data))
                 }
             }.resume()
         }

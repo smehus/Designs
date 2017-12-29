@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveSwift
+import Result
 
 protocol GatewayViewModel {
     var state: MutableProperty<GatewayState> { get set }
@@ -32,6 +33,10 @@ class GatewayViewControllerViewModel: GatewayViewModel {
     }
     
     func runStartupSequence() {
+        fetchAPODS()
+    }
+    
+    private func fetchAPODS() {
         state.value = .loading
         bridge.makeFetchAPOD(at: Date()).startWithResult { [weak self] (result) in
             switch result {
@@ -46,5 +51,4 @@ class GatewayViewControllerViewModel: GatewayViewModel {
             }
         }
     }
-
 }

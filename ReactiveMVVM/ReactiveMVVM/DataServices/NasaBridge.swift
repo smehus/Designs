@@ -44,9 +44,11 @@ protocol NasaBridge {
 class WebSerivceNasaBridge: NasaBridge {
     
     private let session: SessionManager
+    private let jsonDecoder = JSONDecoder()
     
     init(session: SessionManager) {
         self.session = session
+        jsonDecoder.dateDecodingStrategy = .formatted(DateFormatter.apodFormatter)
     }
 //
 //    func makeFetchWeeksAPODS(startingDate: Date) {
@@ -56,11 +58,17 @@ class WebSerivceNasaBridge: NasaBridge {
 //    }
 //
     func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError> {
-        return session.execute(request: NasaRequest.apod(date: Date())).map({ (result) -> Bool in
+        return session.execute(request: NasaRequest.apod(date: Date())).map({ [weak self] (result) -> Bool in
+            guard let strongSelf = self else{ return false }
             switch result {
             case .success(let data):
-                // Parse this shit
-                return true
+                do {
+                    let apod = try strongSelf.jsonDecoder.decode(APOD.self, from: data)
+                    return true
+                } catch let error {
+                    print("⁉️ Failed to parse apod \(error.localizedDescription)")
+                    return false
+                }
             case .failure(let error):
                 return false
             }

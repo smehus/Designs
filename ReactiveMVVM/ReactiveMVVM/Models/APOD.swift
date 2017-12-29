@@ -8,6 +8,23 @@
 
 import Foundation
 
-struct APOD {
+enum MediaType: String {
+    case image = "image"
+    case video = "video"
+}
+
+/// Astronomy Picture of the Day
+struct APOD: Codable {
+    let copyright: String?
+    let date: Date
+    let explanation: String
+    let hdurl: URL?
+    let media_type: String
+    let service_version: String
     let title: String
+    let url: URL
+    
+    var mediaType: MediaType? {
+        return MediaType(rawValue: media_type)
+    }
 }
