@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveSwift
+import Result
 
 enum NasaRequest: Request {
     case apod(date: Date)
@@ -16,21 +17,28 @@ enum NasaRequest: Request {
         return nil
     }
     
+    var apiKey: (key: String, value: String) {
+        return ("api_key", "NfQJhPNcBzPoqmZ4Kb8Uqdcnf5sVdIZqQziQYt7k")
+    }
+    
     var httpHeaders: [String : String]? {
         return nil
     }
     
     var parameters: [String : String]? {
-        return nil
+        switch self {
+        case .apod(let date):
+            return ["date": DateFormatter.apodFormatter.string(from: date), apiKey.key: apiKey.value]
+        }
     }
     
     var baseURL: URL {
-        return URL(string: "")!
+        return URL(string: "https://api.nasa.gov/planetary/apod")!
     }
 }
 
 protocol NasaBridge {
-    func makeFetchAPOD(at date: Date) -> SignalProducer<APOD?, NetworkError>
+    func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError>
 }
 
 class WebSerivceNasaBridge: NasaBridge {
@@ -40,35 +48,26 @@ class WebSerivceNasaBridge: NasaBridge {
     init(session: SessionManager) {
         self.session = session
     }
-    
-    func makeFetchWeeksAPODS(startingDate: Date) {
-        let signals = [SignalProducer<APOD, NetworkError>]()
-        
-        // Zip all signals together
+//
+//    func makeFetchWeeksAPODS(startingDate: Date) {
+//        let signals = [SignalProducer<APOD, NetworkError>]()
+//
+//        // Zip all signals together
+//    }
+//
+    func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError> {
+        return session.execute(request: NasaRequest.apod(date: Date())).map({ (result) -> Bool in
+            switch result {
+            case .success(let data):
+                // Parse this shit
+                return true
+            case .failure(let error):
+                return false
+            }
+        })
     }
-    
-    func makeFetchAPOD(at date: Date) -> SignalProducer<APOD?, NetworkError> {
-        return SignalProducer { [weak self] observer, disposable in
-            self?.session.execute(request: NasaRequest.apod(date: Date()))
-                
-                .map { (result) -> JSON? in
-                    guard case let .success(data) = result else { return nil }
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! JSON
-                        return json
-                    } catch {
-                        return nil
-                    }
-                }
-                
-                .map { (json) -> APOD? in
-                    guard let json = json else { return nil }
-                    return APOD(title: "")
-                }
-                
-                .startWithResult({ (apodResult) in
-                    observer.send(value: nil)
-                })
-        }
-    }
+}
+
+enum ParsingError: Error {
+    case invalidJSON
 }

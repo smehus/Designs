@@ -12,11 +12,21 @@ import Result
 
 
 class GatewayViewController: UIViewController {
-
     
+    var viewModel: GatewayViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBindings()
+        viewModel?.runStartupSequence()
+    }
+    
+    private func setupBindings() {
+        viewModel?.state.signal.observeValues { state in
+            switch state {
+            default: break
+            }
+        }
     }
     
     private func requestSignal(with request: Request) -> SignalProducer<(Data, URLResponse), AnyError>? {

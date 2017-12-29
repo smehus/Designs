@@ -43,6 +43,7 @@ extension Request {
         }
         
         request.httpBody = httpBody
+        request.httpMethod = "GET"
         
         return request
     }

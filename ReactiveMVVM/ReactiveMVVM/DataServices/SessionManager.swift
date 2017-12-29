@@ -18,6 +18,8 @@ enum NetworkError: Error {
 
 internal final class SessionManager {
     
+    static var sharedSession = SessionManager()
+    
     let session = URLSession.shared
     
     var rules: [Rule] {
@@ -27,8 +29,14 @@ internal final class SessionManager {
     
     func execute(request: Request) -> SignalProducer<Result<Data, NoError>, NetworkError> {
         return SignalProducer {[weak self] observer, disposable in
-            guard let urlRequest = request.urlRequest else { return }
-            self?.session.dataTask(with: urlRequest) { [weak self] (data, response, error) in
+            
+            guard let strongSelf = self, let urlRequest = request.urlRequest else {
+                observer.send(error: .unknown)
+                return
+            }
+            print("\(urlRequest)")
+            strongSelf.session.dataTask(with: urlRequest) { [weak self] (data, response, error) in
+                
                 guard
                     let strongSelf = self,
                     let res = response as? HTTPURLResponse,
@@ -38,8 +46,8 @@ internal final class SessionManager {
                     return
                 }
                 
-                let responseHandler = strongSelf.rules.reduce(into: .success(nil), { (result, rule) in
-                    result = rule(res)
+                let responseHandler = strongSelf.rules.reduce(.success(nil), { (result, rule) -> Result<()?, NetworkError> in
+                    return rule(res)
                 })
                 
                 switch responseHandler {
