@@ -2,3 +2,5 @@
 /.build
 /Packages
 /*.xcodeproj
+
+../MVCOperations/MVCOperations.xcodeproj/project.xcworkspace/xcuserdata/scottmehus.xcuserdatad/UserInterfaceState.xcuserstate
