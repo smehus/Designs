@@ -14,6 +14,8 @@ protocol Application {
 
 struct App: Application {
     
+    private let coreDataStack = CoreDataStack(modelName: "Nasa_Store")
+    
     func run() {
         
         guard
@@ -25,6 +27,6 @@ struct App: Application {
         
         let session = SessionManager.sharedSession
         let bridge = WebSerivceNasaBridge(session: session)
-        gateway.viewModel = GatewayViewControllerViewModel(bridge: bridge)
+        gateway.viewModel = GatewayViewControllerViewModel(bridge: bridge, coreDataStack: coreDataStack)
     }
 }

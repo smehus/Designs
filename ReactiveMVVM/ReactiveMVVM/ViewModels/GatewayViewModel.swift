@@ -27,8 +27,10 @@ class GatewayViewControllerViewModel: GatewayViewModel {
     var state = MutableProperty<GatewayState>(.idle)
     
     private let bridge: NasaBridge
+    private let coreDataStack: CoreDataStack
     
-    required init(bridge: NasaBridge) {
+    required init(bridge: NasaBridge, coreDataStack: CoreDataStack) {
+        self.coreDataStack = coreDataStack
         self.bridge = bridge
     }
     

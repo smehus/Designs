@@ -69,7 +69,7 @@ class WebSerivceNasaBridge: NasaBridge {
                     print("⁉️ Failed to parse apod \(error.localizedDescription)")
                     return false
                 }
-            case .failure(let error):
+            case .failure:
                 return false
             }
         })
