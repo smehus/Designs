@@ -10,7 +10,6 @@ import UIKit
 import ReactiveSwift
 import Result
 
-
 class GatewayViewController: UIViewController {
     
     var viewModel: GatewayViewModel?
@@ -35,4 +34,3 @@ class GatewayViewController: UIViewController {
         }
     }
 }
-

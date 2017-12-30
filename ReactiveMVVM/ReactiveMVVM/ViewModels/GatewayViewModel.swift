@@ -48,19 +48,8 @@ class GatewayViewControllerViewModel: GatewayViewModel {
                 self?.state.value = .failed(errorMessage: "Request failed \(error.localizedDescription)")
             case .success:
                 self?.state.value = .success
-                self?.fetchAllPODS()
             }
         })
-    }
-    
-    private func fetchAllPODS() {
-        let fetcher = NSFetchRequest<APOD>(entityName: "APOD")
-        do {
-            let results = try coreDataStack.managedContext.fetch(fetcher)
-            print("FETCH REULST \(results.count)")
-        } catch {
-            assertionFailure()
-        }
     }
 }
 

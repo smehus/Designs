@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A32758A4B5C0DCDAC21CF767 /* Pods_ReactiveMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F044587252D9AA317651414 /* Pods_ReactiveMVVM.framework */; };
+		A50549D41FF83BF300938ABB /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50549D31FF83BF300938ABB /* DataSource.swift */; };
 		A52DAC2D1FF407E000A87ED6 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DAC2C1FF407E000A87ED6 /* DateFormatter+Extensions.swift */; };
 		A5493E221FF71A3900D90B3A /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5493E211FF71A3900D90B3A /* Date+Extensions.swift */; };
+		A5493E251FF80B9E00D90B3A /* APODCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5493E241FF80B9E00D90B3A /* APODCollectionViewController.swift */; };
+		A5493E271FF80BC100D90B3A /* APODCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5493E261FF80BC100D90B3A /* APODCollectionViewModel.swift */; };
 		A54BB8C21FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A54BB8C01FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld */; };
 		A54BB8C71FF7014B003E8761 /* APOD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54BB8C51FF7014B003E8761 /* APOD+CoreDataClass.swift */; };
 		A54BB8C81FF7014B003E8761 /* APOD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54BB8C61FF7014B003E8761 /* APOD+CoreDataProperties.swift */; };
@@ -29,8 +32,11 @@
 
 /* Begin PBXFileReference section */
 		0F044587252D9AA317651414 /* Pods_ReactiveMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactiveMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A50549D31FF83BF300938ABB /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		A52DAC2C1FF407E000A87ED6 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		A5493E211FF71A3900D90B3A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A5493E241FF80B9E00D90B3A /* APODCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODCollectionViewController.swift; sourceTree = "<group>"; };
+		A5493E261FF80BC100D90B3A /* APODCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODCollectionViewModel.swift; sourceTree = "<group>"; };
 		A54BB8C11FF6FEB0003E8761 /* Nasa_Store.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nasa_Store.xcdatamodel; sourceTree = "<group>"; };
 		A54BB8C51FF7014B003E8761 /* APOD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APOD+CoreDataClass.swift"; path = "/Users/scottmehus/Documents/ScottPersonal/NetworkingDesigns/ReactiveMVVM/ReactiveMVVM/CoreData/APOD+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		A54BB8C61FF7014B003E8761 /* APOD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APOD+CoreDataProperties.swift"; path = "/Users/scottmehus/Documents/ScottPersonal/NetworkingDesigns/ReactiveMVVM/ReactiveMVVM/CoreData/APOD+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
@@ -90,6 +96,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A5493E231FF80B7900D90B3A /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				A5493E241FF80B9E00D90B3A /* APODCollectionViewController.swift */,
+				A5493E261FF80BC100D90B3A /* APODCollectionViewModel.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
 		A5CF63501FF6FAAE00857C5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +112,7 @@
 				A54BB8C61FF7014B003E8761 /* APOD+CoreDataProperties.swift */,
 				A5CF63511FF6FABB00857C5E /* CoreDataStack.swift */,
 				A54BB8C01FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld */,
+				A50549D31FF83BF300938ABB /* DataSource.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -148,6 +164,7 @@
 		A5F341621FF1AF22002D1B67 /* ReactiveMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				A5493E231FF80B7900D90B3A /* Content */,
 				A5CF63501FF6FAAE00857C5E /* CoreData */,
 				A52DAC2B1FF407D200A87ED6 /* Extensions */,
 				A5D562891FF3E4190060046F /* ViewModels */,
@@ -296,9 +313,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5D5628B1FF3EB840060046F /* GatewayViewModel.swift in Sources */,
+				A50549D41FF83BF300938ABB /* DataSource.swift in Sources */,
 				A5F341661FF1AF22002D1B67 /* GatewayViewController.swift in Sources */,
 				A54BB8C21FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld in Sources */,
 				A5D562881FF2AAE90060046F /* APODFlyweight.swift in Sources */,
+				A5493E271FF80BC100D90B3A /* APODCollectionViewModel.swift in Sources */,
 				A5D562811FF293490060046F /* Request.swift in Sources */,
 				A5D562831FF293730060046F /* NasaBridge.swift in Sources */,
 				A54BB8C81FF7014B003E8761 /* APOD+CoreDataProperties.swift in Sources */,
@@ -308,6 +327,7 @@
 				A5D5628F1FF3F3920060046F /* App.swift in Sources */,
 				A5D562851FF296C90060046F /* SessionManager.swift in Sources */,
 				A5F341641FF1AF22002D1B67 /* AppDelegate.swift in Sources */,
+				A5493E251FF80B9E00D90B3A /* APODCollectionViewController.swift in Sources */,
 				A52DAC2D1FF407E000A87ED6 /* DateFormatter+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
