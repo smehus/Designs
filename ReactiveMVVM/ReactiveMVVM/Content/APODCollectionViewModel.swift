@@ -8,8 +8,16 @@
 
 import Foundation
 import CoreData
+import ReactiveSwift
+
+enum DataRetrievalState {
+    case idle
+    case reload
+}
 
 protocol APODCollectionViewModel {
+    
+    var state: MutableProperty<DataRetrievalState> { get set }
     
     init(coreDataStack: CoreDataStack)
     
@@ -19,6 +27,8 @@ protocol APODCollectionViewModel {
 }
 
 class APODCollectionViewControllerViewModel: NSObject, APODCollectionViewModel {
+    
+    var state = MutableProperty<DataRetrievalState>(.idle)
     
     private let coreDataStack: CoreDataStack
     private let fetchedResultsController: NSFetchedResultsController<APOD>
@@ -38,7 +48,7 @@ class APODCollectionViewControllerViewModel: NSObject, APODCollectionViewModel {
                 try self.fetchedResultsController.performFetch()
                 if self.fetchedResultsController.fetchedObjects?.isEmpty == false {
                     DispatchQueue.main.async {
-                        // perform update
+                        self.state.value = .reload
                     }
                 }
             } catch let error as NSError {
@@ -77,7 +87,7 @@ extension APODCollectionViewControllerViewModel {
 /*
 @objc
 extension NSFetchedResultsController {
-    // Can't do this???
+    // Can't do this??? whaaaattttt
     @objc func safeObject(at indexPath: IndexPath) -> ResultType? {
         guard let allSections = sections else { return nil}
         guard allSections.count > indexPath.section else { return nil }
