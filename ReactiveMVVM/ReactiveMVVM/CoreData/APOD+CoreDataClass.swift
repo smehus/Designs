@@ -16,7 +16,7 @@ enum APODError: Error {
 @objc(APOD)
 class APOD: NSManagedObject {
 
-    static func store(model: APODFlyweight, context: NSManagedObjectContext) throws {
+    static func storeInScratchPad(model: APODFlyweight, context: NSManagedObjectContext) throws {
         guard let apod = fetchOrCreate(model: model, context: context) else {
             throw APODError.coreDataFailure
         }

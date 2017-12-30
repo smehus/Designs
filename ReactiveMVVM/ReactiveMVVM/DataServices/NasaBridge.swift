@@ -67,7 +67,7 @@ class WebSerivceNasaBridge: NasaBridge {
             case .success(let data):
                 do {
                     let flyweight = try strongSelf.jsonDecoder.decode(APODFlyweight.self, from: data)
-                    try APOD.store(model: flyweight, context: context)
+                    try APOD.storeInScratchPad(model: flyweight, context: context)
                     return true
                 } catch let error {
                     print("⁉️ Failed to parse apod \(error.localizedDescription)")
