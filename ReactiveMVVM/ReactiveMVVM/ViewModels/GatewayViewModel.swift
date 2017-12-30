@@ -45,7 +45,6 @@ class GatewayViewControllerViewModel: GatewayViewModel {
         bridge.makeFetchWeeksAPODS(startingDate: Date())?.startWithResult({ [weak self] (result) in
             switch result {
             case .failure(let error):
-                print("FETCH WEEKS ERROR \(error.localizedDescription)")
                 self?.state.value = .failed(errorMessage: "Request failed \(error.localizedDescription)")
             case .success:
                 self?.state.value = .success

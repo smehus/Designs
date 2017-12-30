@@ -35,7 +35,6 @@ internal final class SessionManager {
                 return
             }
             
-            print("REQUESTING \(urlRequest)")
             strongSelf.session.dataTask(with: urlRequest) { [weak self, weak observer] (data, response, error) in
                 defer {
                     observer?.sendCompleted()
@@ -52,7 +51,10 @@ internal final class SessionManager {
                 }
                 
                 let responseHandler = strongSelf.rules.reduce(.success(nil), { (result, rule) -> Result<()?, NetworkError> in
-                    return rule(res)
+                    switch result {
+                    case .failure: return result
+                    case .success: return rule(res)
+                    }
                 })
                 
                 switch responseHandler {

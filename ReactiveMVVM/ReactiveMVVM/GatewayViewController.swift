@@ -15,8 +15,6 @@ class GatewayViewController: UIViewController {
     
     var viewModel: GatewayViewModel?
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
@@ -31,15 +29,10 @@ class GatewayViewController: UIViewController {
             case .success:
                 print("Gatway state success")
             case .failed(let errorMessage):
-                print("Gatway state failure ")
+                print("Gatway state failure \(errorMessage)")
             default: break
             }
         }
-    }
-    
-    private func requestSignal(with request: Request) -> SignalProducer<(Data, URLResponse), AnyError>? {
-        guard let urlReqest = request.urlRequest else { return nil }
-        return URLSession.shared.reactive.data(with: urlReqest)
     }
 }
 
