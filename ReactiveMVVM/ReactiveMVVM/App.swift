@@ -26,7 +26,7 @@ struct App: Application {
         }
         
         let session = SessionManager.sharedSession
-        let bridge = WebSerivceNasaBridge(session: session, managedContext: coreDataStack.managedContext)
+        let bridge = WebSerivceNasaBridge(session: session, coreDataStack: coreDataStack)
         gateway.viewModel = GatewayViewControllerViewModel(bridge: bridge, coreDataStack: coreDataStack)
     }
 }

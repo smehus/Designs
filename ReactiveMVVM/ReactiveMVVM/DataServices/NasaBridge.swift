@@ -47,16 +47,16 @@ class WebSerivceNasaBridge: NasaBridge {
     
     private let session: SessionManager
     private let jsonDecoder = JSONDecoder()
-    private let managedContext: NSManagedObjectContext
+    private let coreDataStack: CoreDataStack
     
     var currentZip: SignalProducer<[Bool], NetworkError>?
     
-    init(session: SessionManager, managedContext: NSManagedObjectContext) {
+    init(session: SessionManager, coreDataStack: CoreDataStack) {
         self.session = session
-        self.managedContext = managedContext
+        self.coreDataStack = coreDataStack
         jsonDecoder.dateDecodingStrategy = .formatted(DateFormatter.apodFormatter)
     }
-
+    
     func makeFetchWeeksAPODS(startingDate: Date) -> SignalProducer<[Bool], NetworkError>? {
         var signals = [SignalProducer<Bool, NetworkError>]()
         let today = Date()
@@ -83,19 +83,15 @@ class WebSerivceNasaBridge: NasaBridge {
                 return
             }
             
-            do {
-                try strongSelf.managedContext.save()
-            } catch let error as NSError {
-                print("Failed to save context \(error.localizedDescription)")
-            }
-        }, interrupted: nil, terminated: nil, disposed: nil, value: nil)
+            strongSelf.coreDataStack.saveContext()
+            }, interrupted: nil, terminated: nil, disposed: nil, value: nil)
         
          return sig
     }
 
     func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError> {
         return session.execute(request: NasaRequest.apod(date: date)).map({ [weak self] (result) -> Bool in
-            guard let strongSelf = self, let context = self?.managedContext else{ return false }
+            guard let strongSelf = self, let context = self?.coreDataStack.managedContext else{ return false }
             switch result {
             case .success(let data):
                 do {
