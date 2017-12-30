@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveSwift
 import Result
+import CoreData
 
 protocol GatewayViewModel {
     var state: MutableProperty<GatewayState> { get set }
@@ -40,17 +41,27 @@ class GatewayViewControllerViewModel: GatewayViewModel {
     
     private func fetchAPODS() {
         state.value = .loading
-        bridge.makeFetchAPOD(at: Date()).startWithResult { [weak self] (result) in
+        
+        bridge.makeFetchWeeksAPODS(startingDate: Date())?.startWithResult({ [weak self] (result) in
             switch result {
             case .failure(let error):
+                print("FETCH WEEKS ERROR \(error.localizedDescription)")
                 self?.state.value = .failed(errorMessage: "Request failed \(error.localizedDescription)")
-            case .success(let success):
-                if success {
-                    self?.state.value = .success
-                } else {
-                    self?.state.value = .failed(errorMessage: "Request succeeded but data is invalid")
-                }
+            case .success:
+                self?.state.value = .success
+                self?.fetchAllPODS()
             }
+        })
+    }
+    
+    private func fetchAllPODS() {
+        let fetcher = NSFetchRequest<APOD>(entityName: "APOD")
+        do {
+            let results = try coreDataStack.managedContext.fetch(fetcher)
+            print("FETCH REULST \(results.count)")
+        } catch {
+            assertionFailure()
         }
     }
 }
+

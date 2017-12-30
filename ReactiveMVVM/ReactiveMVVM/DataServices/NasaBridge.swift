@@ -40,6 +40,7 @@ enum NasaRequest: Request {
 
 protocol NasaBridge {
     func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError>
+    func makeFetchWeeksAPODS(startingDate: Date) -> SignalProducer<[Bool], NetworkError>?
 }
 
 class WebSerivceNasaBridge: NasaBridge {
@@ -47,6 +48,8 @@ class WebSerivceNasaBridge: NasaBridge {
     private let session: SessionManager
     private let jsonDecoder = JSONDecoder()
     private let managedContext: NSManagedObjectContext
+    
+    var currentZip: SignalProducer<[Bool], NetworkError>?
     
     init(session: SessionManager, managedContext: NSManagedObjectContext) {
         self.session = session
@@ -57,7 +60,7 @@ class WebSerivceNasaBridge: NasaBridge {
     func makeFetchWeeksAPODS(startingDate: Date) -> SignalProducer<[Bool], NetworkError>? {
         var signals = [SignalProducer<Bool, NetworkError>]()
         let today = Date()
-        guard var deltaDate = today.day(fromInterval: -30) else {
+        guard var deltaDate = today.day(fromInterval: -5) else {
             assertionFailure()
             return nil
         }
@@ -74,11 +77,24 @@ class WebSerivceNasaBridge: NasaBridge {
         }
         
         
-         return SignalProducer.zip(signals)
+        let sig = SignalProducer.zip(signals).on(starting: nil, started: nil, event: nil, failed: nil, completed: { [weak self] in
+            guard let strongSelf = self else {
+                assertionFailure()
+                return
+            }
+            
+            do {
+                try strongSelf.managedContext.save()
+            } catch let error as NSError {
+                print("Failed to save context \(error.localizedDescription)")
+            }
+        }, interrupted: nil, terminated: nil, disposed: nil, value: nil)
+        
+         return sig
     }
 
     func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError> {
-        return session.execute(request: NasaRequest.apod(date: Date())).map({ [weak self] (result) -> Bool in
+        return session.execute(request: NasaRequest.apod(date: date)).map({ [weak self] (result) -> Bool in
             guard let strongSelf = self, let context = self?.managedContext else{ return false }
             switch result {
             case .success(let data):

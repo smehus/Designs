@@ -14,6 +14,7 @@ class CoreDataStack {
     private let modelName: String
     
     lazy var managedContext: NSManagedObjectContext = {
+        print("CONTAINERN LOCAITON \(self.storeContainer.persistentStoreCoordinator.persistentStores.first?.url)")
         return self.storeContainer.viewContext
     }()
     
