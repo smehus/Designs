@@ -54,12 +54,12 @@ class WebSerivceNasaBridge: NasaBridge {
         jsonDecoder.dateDecodingStrategy = .formatted(DateFormatter.apodFormatter)
     }
 
-    func makeFetchWeeksAPODS(startingDate: Date) {
+    func makeFetchWeeksAPODS(startingDate: Date) -> SignalProducer<[Bool], NetworkError>? {
         var signals = [SignalProducer<Bool, NetworkError>]()
         let today = Date()
         guard var deltaDate = today.day(fromInterval: -30) else {
             assertionFailure()
-            return
+            return nil
         }
         
         Loop: while deltaDate <= today {
@@ -74,9 +74,7 @@ class WebSerivceNasaBridge: NasaBridge {
         }
         
         
-        
-
-        // Zip all signals together
+         return SignalProducer.zip(signals)
     }
 
     func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError> {
