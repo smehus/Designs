@@ -22,13 +22,6 @@ class APOD: NSManagedObject {
         }
         
         apod.update(with: model)
-        
-        do {
-            try context.save()
-        } catch let error as NSError {
-            print("FAILED TO SAVE CONTEXT \(error.localizedDescription)")
-            throw error
-        }
     }
     
     private static func fetchOrCreate(model: APODFlyweight, context: NSManagedObjectContext) -> APOD? {

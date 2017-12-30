@@ -53,13 +53,32 @@ class WebSerivceNasaBridge: NasaBridge {
         self.managedContext = managedContext
         jsonDecoder.dateDecodingStrategy = .formatted(DateFormatter.apodFormatter)
     }
-//
-//    func makeFetchWeeksAPODS(startingDate: Date) {
-//        let signals = [SignalProducer<APOD, NetworkError>]()
-//
-//        // Zip all signals together
-//    }
-//
+
+    func makeFetchWeeksAPODS(startingDate: Date) {
+        var signals = [SignalProducer<Bool, NetworkError>]()
+        let today = Date()
+        guard var deltaDate = today.day(fromInterval: -30) else {
+            assertionFailure()
+            return
+        }
+        
+        Loop: while deltaDate <= today {
+            
+            let newSig = makeFetchAPOD(at: deltaDate)
+            signals.append(newSig)
+            guard let next = deltaDate.dayAfter else {
+                break Loop
+            }
+            
+            deltaDate = next
+        }
+        
+        
+        
+
+        // Zip all signals together
+    }
+
     func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError> {
         return session.execute(request: NasaRequest.apod(date: Date())).map({ [weak self] (result) -> Bool in
             guard let strongSelf = self, let context = self?.managedContext else{ return false }
