@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveSwift
 import Result
+import CoreData
 
 enum NasaRequest: Request {
     case apod(date: Date)
@@ -45,9 +46,11 @@ class WebSerivceNasaBridge: NasaBridge {
     
     private let session: SessionManager
     private let jsonDecoder = JSONDecoder()
+    private let managedContext: NSManagedObjectContext
     
-    init(session: SessionManager) {
+    init(session: SessionManager, managedContext: NSManagedObjectContext) {
         self.session = session
+        self.managedContext = managedContext
         jsonDecoder.dateDecodingStrategy = .formatted(DateFormatter.apodFormatter)
     }
 //
@@ -59,12 +62,12 @@ class WebSerivceNasaBridge: NasaBridge {
 //
     func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError> {
         return session.execute(request: NasaRequest.apod(date: Date())).map({ [weak self] (result) -> Bool in
-            guard let strongSelf = self else{ return false }
+            guard let strongSelf = self, let context = self?.managedContext else{ return false }
             switch result {
             case .success(let data):
                 do {
                     let flyweight = try strongSelf.jsonDecoder.decode(APODFlyweight.self, from: data)
-                    
+                    try APOD.store(model: flyweight, context: context)
                     return true
                 } catch let error {
                     print("⁉️ Failed to parse apod \(error.localizedDescription)")

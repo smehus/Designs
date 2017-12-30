@@ -9,8 +9,44 @@
 import Foundation
 import CoreData
 
+enum APODError: Error {
+    case coreDataFailure
+}
+
 @objc(APOD)
 class APOD: NSManagedObject {
+
+    static func store(model: APODFlyweight, context: NSManagedObjectContext) throws {
+        guard let apod = fetchOrCreate(model: model, context: context) else {
+            throw APODError.coreDataFailure
+        }
+        
+        apod.update(with: model)
+        
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("FAILED TO SAVE CONTEXT \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    private static func fetchOrCreate(model: APODFlyweight, context: NSManagedObjectContext) -> APOD? {
+        let fetch: NSFetchRequest<APOD> = APOD.fetchRequest()
+        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(APOD.date), model.date as NSDate)
+        
+        do {
+            let results = try context.fetch(fetch)
+            if let current = results.first {
+                return current
+            } else {
+                return APOD(context: context)
+            }
+        } catch {
+            assertionFailure("Failed to fetch APOD models")
+            return nil
+        }
+    }
     
     func update(with flyweight: APODFlyweight) {
         self.title = flyweight.title
@@ -21,29 +57,5 @@ class APOD: NSManagedObject {
         self.explanation = flyweight.explanation
         self.date = flyweight.date as NSDate
         self.copyright = flyweight.copyright
-    }
-
-    func store(model: APODFlyweight, context: NSManagedObjectContext) throws {
-        let fetch: NSFetchRequest<APOD> = APOD.fetchRequest()
-        fetch.predicate = NSPredicate(format: "%K == %@", #keyPath(APOD.date), model.date as NSDate)
-        var updatedApod: APOD?
-        do {
-            let results = try context.fetch(fetch)
-            if let current = results.first {
-                updatedApod = current
-            }
-        } catch {
-            updatedApod = APOD(context: context)
-        }
-        
-        if let apod = updatedApod {
-            apod.update(with: model)
-            do {
-                try context.save()
-            } catch let error as NSError {
-                print("FAILED TO SAVE CONTEXT \(error.localizedDescription)")
-                throw error
-            }
-        }
     }
 }
