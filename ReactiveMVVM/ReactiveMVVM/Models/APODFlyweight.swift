@@ -14,7 +14,7 @@ enum MediaType: String {
 }
 
 /// Astronomy Picture of the Day
-struct APOD: Codable {
+struct APODFlyweight: Codable {
     let copyright: String?
     let date: Date
     let explanation: String

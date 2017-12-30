@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		A32758A4B5C0DCDAC21CF767 /* Pods_ReactiveMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F044587252D9AA317651414 /* Pods_ReactiveMVVM.framework */; };
 		A52DAC2D1FF407E000A87ED6 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DAC2C1FF407E000A87ED6 /* DateFormatter+Extensions.swift */; };
+		A54BB8C21FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A54BB8C01FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld */; };
+		A54BB8C71FF7014B003E8761 /* APOD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54BB8C51FF7014B003E8761 /* APOD+CoreDataClass.swift */; };
+		A54BB8C81FF7014B003E8761 /* APOD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54BB8C61FF7014B003E8761 /* APOD+CoreDataProperties.swift */; };
 		A5CF63521FF6FABB00857C5E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CF63511FF6FABB00857C5E /* CoreDataStack.swift */; };
 		A5D562811FF293490060046F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562801FF293490060046F /* Request.swift */; };
 		A5D562831FF293730060046F /* NasaBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562821FF293730060046F /* NasaBridge.swift */; };
 		A5D562851FF296C90060046F /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562841FF296C90060046F /* SessionManager.swift */; };
-		A5D562881FF2AAE90060046F /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562871FF2AAE90060046F /* APOD.swift */; };
+		A5D562881FF2AAE90060046F /* APODFlyweight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562871FF2AAE90060046F /* APODFlyweight.swift */; };
 		A5D5628B1FF3EB840060046F /* GatewayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D5628A1FF3EB840060046F /* GatewayViewModel.swift */; };
 		A5D5628F1FF3F3920060046F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D5628E1FF3F3920060046F /* App.swift */; };
 		A5F341641FF1AF22002D1B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F341631FF1AF22002D1B67 /* AppDelegate.swift */; };
@@ -26,11 +29,14 @@
 /* Begin PBXFileReference section */
 		0F044587252D9AA317651414 /* Pods_ReactiveMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactiveMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A52DAC2C1FF407E000A87ED6 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		A54BB8C11FF6FEB0003E8761 /* Nasa_Store.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nasa_Store.xcdatamodel; sourceTree = "<group>"; };
+		A54BB8C51FF7014B003E8761 /* APOD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APOD+CoreDataClass.swift"; path = "/Users/scottmehus/Documents/ScottPersonal/NetworkingDesigns/ReactiveMVVM/ReactiveMVVM/CoreData/APOD+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		A54BB8C61FF7014B003E8761 /* APOD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APOD+CoreDataProperties.swift"; path = "/Users/scottmehus/Documents/ScottPersonal/NetworkingDesigns/ReactiveMVVM/ReactiveMVVM/CoreData/APOD+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		A5CF63511FF6FABB00857C5E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A5D562801FF293490060046F /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A5D562821FF293730060046F /* NasaBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaBridge.swift; sourceTree = "<group>"; };
 		A5D562841FF296C90060046F /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		A5D562871FF2AAE90060046F /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
+		A5D562871FF2AAE90060046F /* APODFlyweight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODFlyweight.swift; sourceTree = "<group>"; };
 		A5D5628A1FF3EB840060046F /* GatewayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayViewModel.swift; sourceTree = "<group>"; };
 		A5D5628E1FF3F3920060046F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		A5F341601FF1AF22002D1B67 /* ReactiveMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +90,10 @@
 		A5CF63501FF6FAAE00857C5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A54BB8C51FF7014B003E8761 /* APOD+CoreDataClass.swift */,
+				A54BB8C61FF7014B003E8761 /* APOD+CoreDataProperties.swift */,
 				A5CF63511FF6FABB00857C5E /* CoreDataStack.swift */,
+				A54BB8C01FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -102,7 +111,7 @@
 		A5D562861FF2AAE10060046F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A5D562871FF2AAE90060046F /* APOD.swift */,
+				A5D562871FF2AAE90060046F /* APODFlyweight.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -285,10 +294,13 @@
 			files = (
 				A5D5628B1FF3EB840060046F /* GatewayViewModel.swift in Sources */,
 				A5F341661FF1AF22002D1B67 /* GatewayViewController.swift in Sources */,
-				A5D562881FF2AAE90060046F /* APOD.swift in Sources */,
+				A54BB8C21FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld in Sources */,
+				A5D562881FF2AAE90060046F /* APODFlyweight.swift in Sources */,
 				A5D562811FF293490060046F /* Request.swift in Sources */,
 				A5D562831FF293730060046F /* NasaBridge.swift in Sources */,
+				A54BB8C81FF7014B003E8761 /* APOD+CoreDataProperties.swift in Sources */,
 				A5CF63521FF6FABB00857C5E /* CoreDataStack.swift in Sources */,
+				A54BB8C71FF7014B003E8761 /* APOD+CoreDataClass.swift in Sources */,
 				A5D5628F1FF3F3920060046F /* App.swift in Sources */,
 				A5D562851FF296C90060046F /* SessionManager.swift in Sources */,
 				A5F341641FF1AF22002D1B67 /* AppDelegate.swift in Sources */,
@@ -480,6 +492,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A54BB8C01FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A54BB8C11FF6FEB0003E8761 /* Nasa_Store.xcdatamodel */,
+			);
+			currentVersion = A54BB8C11FF6FEB0003E8761 /* Nasa_Store.xcdatamodel */;
+			path = Nasa_Store.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A5F341581FF1AF22002D1B67 /* Project object */;
 }

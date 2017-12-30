@@ -63,7 +63,8 @@ class WebSerivceNasaBridge: NasaBridge {
             switch result {
             case .success(let data):
                 do {
-                    let apod = try strongSelf.jsonDecoder.decode(APOD.self, from: data)
+                    let flyweight = try strongSelf.jsonDecoder.decode(APODFlyweight.self, from: data)
+                    
                     return true
                 } catch let error {
                     print("⁉️ Failed to parse apod \(error.localizedDescription)")
