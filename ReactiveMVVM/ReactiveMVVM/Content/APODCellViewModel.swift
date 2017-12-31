@@ -11,14 +11,14 @@ import ReactiveSwift
 
 protocol APODCellViewModel {
     var image: MutableProperty<UIImage?> { get set }
-    var title: MutableProperty<String> { get set }
+    var title: MutableProperty<String?> { get set }
     init(apod: APOD)
 }
 
 struct APODCollectionViewCellViewModel {
     
     var image = MutableProperty<UIImage?>(nil)
-    var title = MutableProperty<String>("")
+    var title = MutableProperty<String?>("")
     
     var apod: APOD? {
         didSet {
@@ -29,5 +29,9 @@ struct APODCollectionViewCellViewModel {
     
     init(apod: APOD) {
         self.apod = apod
+    }
+    
+    private func fetchImage() {
+        
     }
 }

@@ -10,6 +10,7 @@
 		A32758A4B5C0DCDAC21CF767 /* Pods_ReactiveMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F044587252D9AA317651414 /* Pods_ReactiveMVVM.framework */; };
 		A50549D41FF83BF300938ABB /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50549D31FF83BF300938ABB /* DataSource.swift */; };
 		A52DAC2D1FF407E000A87ED6 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52DAC2C1FF407E000A87ED6 /* DateFormatter+Extensions.swift */; };
+		A53388D11FF95BE500F7BBFA /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53388D01FF95BE500F7BBFA /* Downloader.swift */; };
 		A5493E221FF71A3900D90B3A /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5493E211FF71A3900D90B3A /* Date+Extensions.swift */; };
 		A5493E251FF80B9E00D90B3A /* APODCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5493E241FF80B9E00D90B3A /* APODCollectionViewController.swift */; };
 		A5493E271FF80BC100D90B3A /* APODCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5493E261FF80BC100D90B3A /* APODCollectionViewModel.swift */; };
@@ -36,6 +37,7 @@
 		0F044587252D9AA317651414 /* Pods_ReactiveMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactiveMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50549D31FF83BF300938ABB /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		A52DAC2C1FF407E000A87ED6 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		A53388D01FF95BE500F7BBFA /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		A5493E211FF71A3900D90B3A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A5493E241FF80B9E00D90B3A /* APODCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODCollectionViewController.swift; sourceTree = "<group>"; };
 		A5493E261FF80BC100D90B3A /* APODCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				A5D562801FF293490060046F /* Request.swift */,
 				A5D562821FF293730060046F /* NasaBridge.swift */,
 				A5D562841FF296C90060046F /* SessionManager.swift */,
+				A53388D01FF95BE500F7BBFA /* Downloader.swift */,
 			);
 			path = DataServices;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				A5D562831FF293730060046F /* NasaBridge.swift in Sources */,
 				A57C737C1FF9478900B09ED5 /* APODCollectionViewCell.swift in Sources */,
 				A54BB8C81FF7014B003E8761 /* APOD+CoreDataProperties.swift in Sources */,
+				A53388D11FF95BE500F7BBFA /* Downloader.swift in Sources */,
 				A5CF63521FF6FABB00857C5E /* CoreDataStack.swift in Sources */,
 				A54BB8C71FF7014B003E8761 /* APOD+CoreDataClass.swift in Sources */,
 				A5493E221FF71A3900D90B3A /* Date+Extensions.swift in Sources */,
