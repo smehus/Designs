@@ -99,6 +99,6 @@ extension NSFetchedResultsController {
 
 extension APODCollectionViewControllerViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("content changed")
+        state.value = .reload
     }
 }

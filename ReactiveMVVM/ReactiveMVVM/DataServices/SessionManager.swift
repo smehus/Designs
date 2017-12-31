@@ -12,8 +12,16 @@ import ReactiveSwift
 
 enum NetworkError: Error {
     case unknown
-    case unrecognizedHTTPResponse
-    case invalideCode
+    case unrecognizedHTTPResponse(code: Int)
+    case invalideCode(code: Int)
+    
+    var localizedDescription: String {
+        switch self {
+        case .unknown: return "Unknown Error"
+        case .unrecognizedHTTPResponse(let code): return "Unrecognized HTTPURLResponse Status Code \(code)"
+        case .invalideCode(let code): return "Invalid Status code: \(code)"
+        }
+    }
 }
 
 internal final class SessionManager {
@@ -23,8 +31,8 @@ internal final class SessionManager {
     let session = URLSession.shared
     
     var rules: [Rule] {
-        return [statusCodeRule(codeRange: 200...399, shouldContain: true),
-                statusCodeRule(codeRange: 400...599, shouldContain: false)]
+        return [/*statusCodeRule(codeRange: 200...399, shouldContain: true),
+                statusCodeRule(codeRange: 400...599, shouldContain: false)*/]
     }
     
     func execute(request: Request) -> SignalProducer<Result<Data, NoError>, NetworkError> {
@@ -69,7 +77,7 @@ internal final class SessionManager {
     
     func statusCodeRule(codeRange: ClosedRange<Int>, shouldContain: Bool) -> Rule {
         return { response in
-            return (codeRange.contains(response.statusCode) == shouldContain) ? .success(nil) : .failure(NetworkError.invalideCode)
+            return (codeRange.contains(response.statusCode) == shouldContain) ? .success(nil) : .failure(NetworkError.invalideCode(code: response.statusCode))
         }
     }
 }

@@ -12,6 +12,7 @@ extension DateFormatter {
     static var apodFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
+        formatter.locale = Locale(identifier: "en_US")
         return formatter
     }
 }

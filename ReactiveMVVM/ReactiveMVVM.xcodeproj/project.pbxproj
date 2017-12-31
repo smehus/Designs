@@ -16,6 +16,8 @@
 		A54BB8C21FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A54BB8C01FF6FEB0003E8761 /* Nasa_Store.xcdatamodeld */; };
 		A54BB8C71FF7014B003E8761 /* APOD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54BB8C51FF7014B003E8761 /* APOD+CoreDataClass.swift */; };
 		A54BB8C81FF7014B003E8761 /* APOD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54BB8C61FF7014B003E8761 /* APOD+CoreDataProperties.swift */; };
+		A57C737C1FF9478900B09ED5 /* APODCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C737B1FF9478900B09ED5 /* APODCollectionViewCell.swift */; };
+		A57C737E1FF9479600B09ED5 /* APODCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57C737D1FF9479600B09ED5 /* APODCellViewModel.swift */; };
 		A5CF63521FF6FABB00857C5E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CF63511FF6FABB00857C5E /* CoreDataStack.swift */; };
 		A5D562811FF293490060046F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562801FF293490060046F /* Request.swift */; };
 		A5D562831FF293730060046F /* NasaBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D562821FF293730060046F /* NasaBridge.swift */; };
@@ -40,6 +42,8 @@
 		A54BB8C11FF6FEB0003E8761 /* Nasa_Store.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nasa_Store.xcdatamodel; sourceTree = "<group>"; };
 		A54BB8C51FF7014B003E8761 /* APOD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APOD+CoreDataClass.swift"; path = "/Users/scottmehus/Documents/ScottPersonal/NetworkingDesigns/ReactiveMVVM/ReactiveMVVM/CoreData/APOD+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		A54BB8C61FF7014B003E8761 /* APOD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APOD+CoreDataProperties.swift"; path = "/Users/scottmehus/Documents/ScottPersonal/NetworkingDesigns/ReactiveMVVM/ReactiveMVVM/CoreData/APOD+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		A57C737B1FF9478900B09ED5 /* APODCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODCollectionViewCell.swift; sourceTree = "<group>"; };
+		A57C737D1FF9479600B09ED5 /* APODCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODCellViewModel.swift; sourceTree = "<group>"; };
 		A5CF63511FF6FABB00857C5E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A5D562801FF293490060046F /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A5D562821FF293730060046F /* NasaBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaBridge.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 			children = (
 				A5493E241FF80B9E00D90B3A /* APODCollectionViewController.swift */,
 				A5493E261FF80BC100D90B3A /* APODCollectionViewModel.swift */,
+				A57C737B1FF9478900B09ED5 /* APODCollectionViewCell.swift */,
+				A57C737D1FF9479600B09ED5 /* APODCellViewModel.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -259,11 +265,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReactiveMVVM/Pods-ReactiveMVVM-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 			);
@@ -320,11 +328,13 @@
 				A5493E271FF80BC100D90B3A /* APODCollectionViewModel.swift in Sources */,
 				A5D562811FF293490060046F /* Request.swift in Sources */,
 				A5D562831FF293730060046F /* NasaBridge.swift in Sources */,
+				A57C737C1FF9478900B09ED5 /* APODCollectionViewCell.swift in Sources */,
 				A54BB8C81FF7014B003E8761 /* APOD+CoreDataProperties.swift in Sources */,
 				A5CF63521FF6FABB00857C5E /* CoreDataStack.swift in Sources */,
 				A54BB8C71FF7014B003E8761 /* APOD+CoreDataClass.swift in Sources */,
 				A5493E221FF71A3900D90B3A /* Date+Extensions.swift in Sources */,
 				A5D5628F1FF3F3920060046F /* App.swift in Sources */,
+				A57C737E1FF9479600B09ED5 /* APODCellViewModel.swift in Sources */,
 				A5D562851FF296C90060046F /* SessionManager.swift in Sources */,
 				A5F341641FF1AF22002D1B67 /* AppDelegate.swift in Sources */,
 				A5493E251FF80B9E00D90B3A /* APODCollectionViewController.swift in Sources */,
@@ -472,7 +482,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mehus.ReactiveMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

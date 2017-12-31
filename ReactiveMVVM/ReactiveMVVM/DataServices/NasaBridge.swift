@@ -90,6 +90,7 @@ class WebSerivceNasaBridge: NasaBridge {
     }
 
     func makeFetchAPOD(at date: Date) -> SignalProducer<Bool, NetworkError> {
+        
         return session.execute(request: NasaRequest.apod(date: date)).map({ [weak self] (result) -> Bool in
             guard let strongSelf = self, let context = self?.coreDataStack.managedContext else{ return false }
             switch result {
@@ -100,12 +101,25 @@ class WebSerivceNasaBridge: NasaBridge {
                     return true
                 } catch let error {
                     print("⁉️ Failed to parse apod \(error.localizedDescription)")
+                    if let json = self?.retrieveDebugJSON(from: data) {
+                        print("❗️ JSON Response \(json)")
+                    }
                     return false
                 }
             case .failure:
+                print("⁉️ Session Manager Failed")
                 return false
             }
         })
+    }
+    
+    private func retrieveDebugJSON(from data: Data) -> JSON? {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? JSON
+            return json
+        } catch {
+            return nil
+        }
     }
 }
 

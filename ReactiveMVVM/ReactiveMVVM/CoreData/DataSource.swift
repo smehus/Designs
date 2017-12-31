@@ -21,6 +21,13 @@ protocol ListDataSource {
     
 }
 
+class AnyDataSource<T> {
+    
+    init<Concrete: ListDataSource>(concrete: Concrete) where Concrete.DataType == T {
+        
+    }
+}
+
 class APODFetchedResultsController: ListDataSource {
     
     typealias DataType = APOD
