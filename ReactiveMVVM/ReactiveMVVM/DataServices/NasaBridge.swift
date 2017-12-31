@@ -59,7 +59,7 @@ class WebSerivceNasaBridge: NasaBridge {
     
     func makeFetchWeeksAPODS(startingDate: Date) -> SignalProducer<[Bool], NetworkError>? {
         var signals = [SignalProducer<Bool, NetworkError>]()
-        let today = Date()
+        let today = startingDate
         guard var deltaDate = today.day(fromInterval: -5) else {
             assertionFailure()
             return nil
@@ -101,9 +101,6 @@ class WebSerivceNasaBridge: NasaBridge {
                     return true
                 } catch let error {
                     print("⁉️ Failed to parse apod \(error.localizedDescription)")
-                    if let json = self?.retrieveDebugJSON(from: data) {
-                        print("❗️ JSON Response \(json)")
-                    }
                     return false
                 }
             case .failure:
@@ -111,15 +108,6 @@ class WebSerivceNasaBridge: NasaBridge {
                 return false
             }
         })
-    }
-    
-    private func retrieveDebugJSON(from data: Data) -> JSON? {
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? JSON
-            return json
-        } catch {
-            return nil
-        }
     }
 }
 

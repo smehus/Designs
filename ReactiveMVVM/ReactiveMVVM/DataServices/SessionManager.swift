@@ -49,6 +49,7 @@ internal final class SessionManager {
                 
                 switch self.validate(response: response, error: error) {
                 case .failure(let error):
+                    self.printDebugJSON(from: urlRequest, data: data)
                     observer?.send(error: error)
                 case .success:
                     guard let data = data else {
@@ -63,7 +64,6 @@ internal final class SessionManager {
         }
     }
 }
-
 
 // MARK: - Download Task
 extension SessionManager {
@@ -81,7 +81,6 @@ extension SessionManager {
                 defer {
                     observer?.sendCompleted()
                 }
-                
                 
                 switch self.validate(response: response, error: error) {
                 case .failure(let error):
@@ -127,6 +126,15 @@ extension SessionManager {
             case .success: return rule(res)
             }
         })
+    }
+    
+    private func printDebugJSON(from request: URLRequest, data: Data?) {
+        guard let data = data else { return }
+        do {
+            if let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? JSON {
+                print("Error Body: \(json) for request: \(request)")
+            }
+        } catch { }
     }
 }
 

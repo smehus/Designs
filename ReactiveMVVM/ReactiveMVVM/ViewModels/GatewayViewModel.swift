@@ -42,7 +42,7 @@ class GatewayViewControllerViewModel: GatewayViewModel {
     private func fetchAPODS() {
         state.value = .loading
         
-        bridge.makeFetchWeeksAPODS(startingDate: Date())?.startWithResult({ [weak self] (result) in
+        bridge.makeFetchWeeksAPODS(startingDate: Date().dayBefore!)?.startWithResult({ [weak self] (result) in
             switch result {
             case .failure(let error):
                 self?.state.value = .failed(errorMessage: "Request failed \(error.localizedDescription)")

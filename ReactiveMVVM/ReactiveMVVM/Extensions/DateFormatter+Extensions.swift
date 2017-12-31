@@ -13,6 +13,7 @@ extension DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
         formatter.locale = Locale(identifier: "en_US")
+        formatter.timeZone = TimeZone(abbreviation: "PST")
         return formatter
     }
 }
