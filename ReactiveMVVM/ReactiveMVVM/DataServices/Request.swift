@@ -11,18 +11,26 @@ import Foundation
 typealias JSON = [String: Any]
 
 protocol Request {
-    var baseURL: URL { get }
+    var baseURL: URL? { get }
     var parameters: [String: String]? { get }
     var httpHeaders: [String: String]? { get }
+    var path: String? { get }
     var httpBody: Data? { get }
 }
 
 extension Request {
     
     var urlRequest: URLRequest? {
-        guard var component = URLComponents(url: baseURL, resolvingAgainstBaseURL: false) else {
+        guard
+            let baseURL = baseURL,
+            var component = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)
+        else {
             print("❌ Failed to create url components")
             return nil
+        }
+        
+        if let path = path {
+            component.path = path
         }
         
         if let params = parameters {

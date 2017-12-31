@@ -28,7 +28,12 @@ enum NetworkError: Error {
     }
 }
 
-internal final class SessionManager {
+protocol Session {
+    func execute(request: Request) -> SignalProducer<Result<Data, NoError>, NetworkError>
+    func download(with request: Request) -> SignalProducer<URL, NetworkError>
+}
+
+internal final class SessionManager: Session {
     
     static var sharedSession = SessionManager()
     

@@ -13,6 +13,7 @@ import CoreData
 
 enum NasaRequest: Request {
     case apod(date: Date)
+    case image(urlString: String)
     
     var httpBody: Data? {
         return nil
@@ -30,11 +31,27 @@ enum NasaRequest: Request {
         switch self {
         case .apod(let date):
             return ["date": DateFormatter.apodFormatter.string(from: date), apiKey.key: apiKey.value]
+        default: return nil
         }
     }
     
-    var baseURL: URL {
-        return URL(string: "https://api.nasa.gov/planetary/apod")!
+    var path: String? {
+        switch self {
+        case .apod:
+            return "/planetary/apod"
+        case .image: return nil
+        }
+        
+    }
+    
+    var baseURL: URL? {
+        switch self {
+        case .apod:
+            return URL(string: "https://api.nasa.gov")!
+        case .image(let urlString):
+            return URL(string: urlString)
+        }
+        
     }
 }
 
@@ -45,13 +62,13 @@ protocol NasaBridge {
 
 class WebSerivceNasaBridge: NasaBridge {
     
-    private let session: SessionManager
+    private let session: Session
     private let jsonDecoder = JSONDecoder()
     private let coreDataStack: CoreDataStack
     
     var currentZip: SignalProducer<[Bool], NetworkError>?
     
-    init(session: SessionManager, coreDataStack: CoreDataStack) {
+    init(session: Session, coreDataStack: CoreDataStack) {
         self.session = session
         self.coreDataStack = coreDataStack
         jsonDecoder.dateDecodingStrategy = .formatted(DateFormatter.apodFormatter)
@@ -109,8 +126,4 @@ class WebSerivceNasaBridge: NasaBridge {
             }
         })
     }
-}
-
-enum ParsingError: Error {
-    case invalidJSON
 }

@@ -23,7 +23,7 @@ protocol APODCollectionViewModel {
     
     var numberOfSections: Int { get }
     func numberOfRows(in section: Int) -> Int
-    func viewModel(for indexPath: IndexPath) -> APOD?
+    func viewModel(for indexPath: IndexPath) -> APODCellViewModel?
 }
 
 class APODCollectionViewControllerViewModel: NSObject, APODCollectionViewModel {
@@ -76,11 +76,12 @@ extension APODCollectionViewControllerViewModel {
         return section.numberOfObjects
     }
     
-    func viewModel(for indexPath: IndexPath) -> APOD? {
+    func viewModel(for indexPath: IndexPath) -> APODCellViewModel? {
         guard let allSections = fetchedResultsController.sections else { return nil}
         guard allSections.count > indexPath.section else { return nil }
         guard allSections[indexPath.section].numberOfObjects > indexPath.row else { return nil }
-        return fetchedResultsController.object(at: indexPath)
+        let apod = fetchedResultsController.object(at: indexPath)
+        return APODCollectionViewCellViewModel(apod: apod, imageDownloader: CachedImageDownloader.shared)
     }
 }
 
