@@ -26,22 +26,24 @@ class APODCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(viewModel != nil)
-        
     }
 }
 
 extension APODCollectionViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
+        return viewModel.numberOfSections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return viewModel.numberOfRows(in: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! APODCollectionViewCell
+        if let model = viewModel.viewModel(for: indexPath) {
+            cell.configure(with: model)
+        }
         
         return cell
     }

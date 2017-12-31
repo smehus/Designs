@@ -8,33 +8,37 @@
 
 import UIKit
 import ReactiveSwift
+import Result
 
-protocol APODCellViewModel {
+protocol APODCellViewModel: class {
     var image: MutableProperty<UIImage?> { get set }
     var title: MutableProperty<String?> { get set }
     init(apod: APOD, imageDownloader: ImageDownloader)
 }
 
-struct APODCollectionViewCellViewModel: APODCellViewModel {
+class APODCollectionViewCellViewModel: APODCellViewModel {
     
     var image = MutableProperty<UIImage?>(nil)
     var title = MutableProperty<String?>("")
     
-    var apod: APOD? {
+    var apod: APOD {
         didSet {
-            guard let apod = apod else { return }
             title.value = apod.title
         }
     }
     
     private let imageDownloader: ImageDownloader
     
-    init(apod: APOD, imageDownloader: ImageDownloader) {
+    required init(apod: APOD, imageDownloader: ImageDownloader) {
         self.apod = apod
         self.imageDownloader = imageDownloader
+        fetchImage()
     }
     
     private func fetchImage() {
-        
+        imageDownloader.downloadImage(with: NasaRequest.image(urlString: apod.url)).startWithResult { [weak self] (result) in
+            guard case let Result.success(image) = result else { return }
+            self?.image.value = image
+        }
     }
 }
