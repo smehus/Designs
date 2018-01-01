@@ -22,6 +22,6 @@ class APODCollectionViewCell: UICollectionViewCell {
     
     func configure(with viewModel: APODCellViewModel) {
         title.reactive.text <~ viewModel.title.signal
-        apodImageView.reactive.image <~ viewModel.image.signal
+//        apodImageView.reactive.image <~ viewModel.image.signal
     }
 }

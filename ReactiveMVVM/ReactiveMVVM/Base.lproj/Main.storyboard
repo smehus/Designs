@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,7 +49,24 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fX0-ik-cEY">
+                                                    <rect key="frame" x="8" y="8" width="112" height="99"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="fX0-ik-cEY" firstAttribute="leading" secondItem="sXi-gT-by9" secondAttribute="leadingMargin" id="f0M-xC-OKY"/>
+                                            <constraint firstItem="fX0-ik-cEY" firstAttribute="top" secondItem="sXi-gT-by9" secondAttribute="topMargin" id="gfZ-I6-7yA"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="fX0-ik-cEY" secondAttribute="bottom" id="nsh-8n-jrB"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="fX0-ik-cEY" secondAttribute="trailing" id="qz3-KZ-p0A"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="title" destination="fX0-ik-cEY" id="YRw-0K-a0W"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

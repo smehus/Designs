@@ -31,6 +31,7 @@ class APODCollectionViewCellViewModel: APODCellViewModel {
     
     required init(apod: APOD, imageDownloader: ImageDownloader) {
         self.apod = apod
+        title.value = apod.title
         self.imageDownloader = imageDownloader
         fetchImage()
     }
