@@ -37,6 +37,7 @@ class APODCollectionViewControllerViewModel: NSObject, APODCollectionViewModel {
         self.coreDataStack = coreDataStack
         fetchedResultsController = NSFetchedResultsController(fetchRequest: APOD.fetchRequest(), managedObjectContext: coreDataStack.managedContext, sectionNameKeyPath: nil, cacheName: nil)
         
+        
         super.init()
         
         makeFetch()

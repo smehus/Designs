@@ -14,6 +14,7 @@ import CoreData
 protocol GatewayViewModel {
     var state: MutableProperty<GatewayState> { get set }
     func runStartupSequence()
+    func contentController() -> APODCollectionViewController
 }
 
 enum GatewayState {
@@ -37,6 +38,12 @@ class GatewayViewControllerViewModel: GatewayViewModel {
     
     func runStartupSequence() {
         fetchAPODS()
+    }
+    
+    func contentController() -> APODCollectionViewController {
+        let controller = APODCollectionViewController.storyboardFile()
+        controller.viewModel = APODCollectionViewControllerViewModel(coreDataStack: coreDataStack)
+        return controller
     }
     
     private func fetchAPODS() {

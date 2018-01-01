@@ -13,7 +13,9 @@ import CoreData
 extension APOD {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<APOD> {
-        return NSFetchRequest<APOD>(entityName: "APOD")
+        let request = NSFetchRequest<APOD>(entityName: String(describing: APOD.self))
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        return request
     }
 
     @NSManaged public var title: String

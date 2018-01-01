@@ -40,7 +40,7 @@ extension APODCollectionViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! APODCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: APODCollectionViewCell.self), for: indexPath) as! APODCollectionViewCell
         if let model = viewModel.viewModel(for: indexPath) {
             cell.configure(with: model)
         }
@@ -51,4 +51,11 @@ extension APODCollectionViewController: UICollectionViewDataSource {
 
 extension APODCollectionViewController: UICollectionViewDelegate {
     
+}
+
+extension APODCollectionViewController {
+    static func storyboardFile() -> APODCollectionViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: String(describing: APODCollectionViewController.self)) as! APODCollectionViewController
+    }
 }

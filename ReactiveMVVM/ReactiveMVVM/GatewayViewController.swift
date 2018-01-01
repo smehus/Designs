@@ -21,16 +21,25 @@ class GatewayViewController: UIViewController {
     }
     
     private func setupBindings() {
-        viewModel?.state.signal.observeValues { state in
+        viewModel?.state.signal.observeValues { [unowned self] state in
             switch state {
             case .loading:
                 print("Gatewaystate loading")
             case .success:
-                print("Gatway state success")
+                self.presentContentController()
             case .failed(let errorMessage):
                 print("Gatway state failure \(errorMessage)")
             default: break
             }
         }
+    }
+    
+    func presentContentController() {
+        guard let controller = viewModel?.contentController() else {
+            assertionFailure()
+            return
+        }
+        
+        present(controller, animated: true, completion: nil)
     }
 }
